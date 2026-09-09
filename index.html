@@ -10,154 +10,156 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f4f5f3;
-  --sheet:#ffffff;
+  --paper:#eeefec;
+  --sheet:#fff;
   --ink:#141414;
   --ink-soft:#5c605e;
-  --line:#c9cdc9;
-  --line-strong:#8d928f;
+  --ink-faint:#8b908d;
+  --line:#d5d9d5;
+  --line-strong:#9aa09c;
   --blue:#1d4e89;
   --mark:#a8342a;
-  --col:60rem;
+  --col:62rem;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
+  margin:0;background:var(--paper);color:var(--ink);
   font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:17px;
-  line-height:1.62;
-  font-feature-settings:"tnum" 1,"cv05" 1;
+  font-size:17px;line-height:1.62;
+  font-feature-settings:"tnum" 1;
+  -webkit-font-smoothing:antialiased;
 }
 @media(max-width:640px){body{font-size:16px}}
-a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,78,137,.35)}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,78,137,.3)}
 a:hover{border-bottom-color:var(--blue)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+p{max-width:63ch}
 
 .sheet{
-  max-width:var(--col);
-  margin:0 auto;
-  background:var(--sheet);
-  border-left:1px solid var(--line);
-  border-right:1px solid var(--line);
+  max-width:var(--col);margin:0 auto;background:var(--sheet);
+  border-left:1px solid var(--line);border-right:1px solid var(--line);
+  box-shadow:0 0 60px rgba(20,20,20,.045);
   min-height:100vh;
 }
-.pad{padding:0 3.5rem}
-@media(max-width:760px){.pad{padding:0 1.5rem}}
+.pad{padding:0 3.75rem}
+@media(max-width:760px){.pad{padding:0 1.4rem}}
 
-/* ---- title block ---- */
-.titleblock{border-bottom:2px solid var(--ink);padding-top:3rem;padding-bottom:1.6rem}
-.titleblock h1{
-  font-size:clamp(2rem,6vw,3.15rem);
-  line-height:1.04;
-  font-weight:700;
-  letter-spacing:-.022em;
-  margin:0 0 .35rem;
+/* ---------- title block ---------- */
+.titleblock{padding-top:3.2rem;padding-bottom:1.5rem;border-bottom:2px solid var(--ink)}
+.ident{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.7rem}
+.ident img{
+  width:6rem;height:6rem;border-radius:50%;object-fit:cover;flex:none;
+  filter:saturate(.92);
 }
-.role{font-size:1.08rem;font-weight:500;color:var(--ink);margin:0 0 1.5rem}
-.tb-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
+@media(max-width:560px){
+  .ident{gap:1.05rem}
+  .ident img{width:4.4rem;height:4.4rem}
 }
+h1{
+  font-size:clamp(1.85rem,5.6vw,3rem);line-height:1.02;font-weight:700;
+  letter-spacing:-.026em;margin:0 0 .3rem;
+}
+.role{font-size:1.05rem;font-weight:500;margin:0;color:var(--ink)}
+.tb-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
 @media(max-width:760px){.tb-grid{grid-template-columns:repeat(2,1fr)}}
-.tb-cell{
-  padding:.7rem .9rem .7rem 0;
-  border-right:1px solid var(--line);
-  font-size:.83rem;
-  line-height:1.45;
-}
+.tb-cell{padding:.75rem 1rem .75rem 0;border-right:1px solid var(--line);font-size:.83rem;line-height:1.48}
 .tb-cell:last-child{border-right:0}
-.tb-cell b{display:block;font-weight:500;color:var(--ink-soft);font-size:.72rem;margin-bottom:.1rem}
+.tb-cell b{display:block;font-weight:500;color:var(--ink-faint);font-size:.71rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.15rem}
 @media(max-width:760px){
-  .tb-cell{padding-left:.9rem;border-bottom:1px solid var(--line)}
+  .tb-cell{padding-left:1rem;border-bottom:1px solid var(--line)}
   .tb-cell:nth-child(odd){padding-left:0}
   .tb-cell:nth-child(2n){border-right:0}
 }
 
-/* ---- language switch ---- */
-.switch{display:flex;gap:0;margin:0 0 2rem;border:1px solid var(--line-strong);width:max-content}
+/* ---------- switch ---------- */
+.switch{display:flex;margin:0 0 2.2rem;border:1px solid var(--line-strong);width:max-content}
 .switch button{
-  font:inherit;font-size:.8rem;font-weight:500;
-  padding:.3rem .85rem;background:none;border:0;cursor:pointer;color:var(--ink-soft);
+  font:inherit;font-size:.78rem;font-weight:500;letter-spacing:.03em;
+  padding:.32rem .9rem;background:none;border:0;cursor:pointer;color:var(--ink-soft);
+  transition:background .15s,color .15s;
 }
 .switch button[aria-pressed="true"]{background:var(--ink);color:#fff}
 
-/* ---- hero measurement ---- */
-.lead{padding-top:2.6rem;padding-bottom:.4rem}
-.lead p{font-size:1.22rem;line-height:1.5;max-width:46ch;margin:0 0 2.4rem;font-weight:400}
-.dim{width:100%;height:auto;display:block;max-width:44rem;margin-bottom:.6rem}
-.dim .tick{stroke:var(--ink);stroke-width:1.1;fill:none}
-.dim .mark-t{stroke:var(--mark)}
-.dim .bar-old{stroke:var(--mark);stroke-width:5;fill:none}
-.dim .bar-new{stroke:var(--ink);stroke-width:5;fill:none}
-.dim .old{fill:var(--mark)}
-.dim .new{fill:var(--ink)}
-.dim text{dominant-baseline:auto;font-family:Inter,sans-serif;font-feature-settings:"tnum" 1}
-.dimcap{font-size:.86rem;color:var(--ink-soft);margin:0 0 3.2rem}
+/* ---------- lead ---------- */
+.lead{padding-top:2.7rem}
+.lead>p{font-size:1.24rem;line-height:1.48;max-width:44ch;margin:0 0 2.9rem;letter-spacing:-.005em}
 
-/* ---- sections ---- */
-section{padding-top:2.9rem;padding-bottom:.4rem;border-top:1px solid var(--line)}
-.zone{
-  display:flex;align-items:baseline;gap:.85rem;
-  font-size:.78rem;color:var(--ink-soft);font-weight:500;margin-bottom:1.15rem;
-}
+/* ---------- dimension drawing ---------- */
+.dimwrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.9rem 0 1.5rem;margin-bottom:1.1rem}
+.dim{width:100%;height:auto;display:block;max-width:41rem}
+.dim .tick{stroke:var(--ink);stroke-width:1}
+.dim .tick-old{stroke:var(--mark)}
+.dim .ext{stroke:var(--line-strong);stroke-width:1;stroke-dasharray:2 3}
+.dim .bar-old{stroke:var(--mark);stroke-width:6;stroke-linecap:butt}
+.dim .bar-new{stroke:var(--ink);stroke-width:6;stroke-linecap:butt}
+.dim .lbl{font-size:12px;fill:var(--ink-faint);letter-spacing:.03em;text-transform:uppercase}
+.dim .val{font-size:23px;font-weight:600}
+.dim .val-old{fill:var(--mark)}
+.dim .val-new{fill:var(--ink)}
+.dimcap{font-size:.87rem;color:var(--ink-soft);max-width:52ch;margin:0 0 3.4rem}
+
+/* ---------- sections ---------- */
+section{padding-top:3.1rem;border-top:1px solid var(--line)}
+.zone{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
 .zone i{
   font-style:normal;color:var(--ink);border:1px solid var(--line-strong);
-  padding:.05rem .42rem;font-size:.72rem;
+  padding:.1rem .5rem;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;
 }
-h2{font-size:1.5rem;line-height:1.24;font-weight:600;letter-spacing:-.014em;margin:0 0 .35rem}
-.meta{font-size:.9rem;color:var(--ink-soft);margin:0 0 1.5rem}
-p{max-width:64ch}
-.body p{margin:0 0 1.15rem}
-.body p:last-child{margin-bottom:1.6rem}
+.zone span{font-size:.79rem;color:var(--ink-faint);letter-spacing:.02em}
+h2{font-size:1.62rem;line-height:1.2;font-weight:600;letter-spacing:-.019em;margin:0 0 .4rem;max-width:22ch}
+.meta{font-size:.9rem;color:var(--ink-soft);margin:0 0 1.7rem;max-width:60ch}
+.body p{margin:0 0 1.2rem}
+.body p:last-child{margin-bottom:1.8rem}
 
-/* ---- quantities ---- */
-.qty{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--ink);border-bottom:1px solid var(--line);
-  margin:0 0 1.9rem;
+/* ---------- quantities ---------- */
+.qty{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 0 2.1rem}
+@media(max-width:640px){.qty{grid-template-columns:1fr}}
+.qty div{
+  padding:1rem 1.2rem 1.05rem 0;border-top:2px solid var(--ink);
+  border-right:1px solid var(--line);
 }
-@media(max-width:640px){.qty{grid-template-columns:1fr;}}
-.qty div{padding:.95rem 1.1rem .95rem 0;border-right:1px solid var(--line)}
+.qty div+div{padding-left:1.2rem}
 .qty div:last-child{border-right:0}
 @media(max-width:640px){
-  .qty div{border-right:0;border-bottom:1px solid var(--line);padding-right:0}
-  .qty div:last-child{border-bottom:0}
+  .qty div{border-right:0;border-top:1px solid var(--line);padding:.8rem 0}
+  .qty div:first-child{border-top:2px solid var(--ink)}
+  .qty div+div{padding-left:0}
 }
-.qty strong{
-  display:block;font-size:1.75rem;font-weight:600;letter-spacing:-.02em;line-height:1.1;
-}
-.qty span{font-size:.85rem;color:var(--ink-soft);display:block;margin-top:.2rem;max-width:24ch}
+.qty strong{display:block;font-size:2rem;font-weight:600;letter-spacing:-.028em;line-height:1.05}
+.qty span{font-size:.845rem;line-height:1.45;color:var(--ink-soft);display:block;margin-top:.3rem;max-width:23ch}
 
-/* ---- tools ---- */
-.tools{font-size:.86rem;color:var(--ink-soft);padding-bottom:2.4rem}
-.tools b{color:var(--ink);font-weight:500}
+.tools{font-size:.85rem;color:var(--ink-soft);padding-bottom:2.6rem;max-width:60ch}
+.tools b{color:var(--ink);font-weight:500;letter-spacing:.03em;text-transform:uppercase;font-size:.72rem}
 
-/* ---- skills table ---- */
-.rows{border-top:1px solid var(--ink);margin-bottom:2.4rem}
-.row{
-  display:grid;grid-template-columns:13rem 1fr;gap:1.2rem;
-  padding:.72rem 0;border-bottom:1px solid var(--line);font-size:.95rem;
-}
-@media(max-width:640px){.row{grid-template-columns:1fr;gap:.15rem}}
+/* ---------- skills ---------- */
+.rows{border-top:2px solid var(--ink);margin-bottom:2.6rem}
+.row{display:grid;grid-template-columns:13.5rem 1fr;gap:1.3rem;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+@media(max-width:640px){.row{grid-template-columns:1fr;gap:.1rem}}
 .row b{font-weight:600}
+.row span{color:var(--ink-soft)}
 
-/* ---- footer ---- */
-footer{border-top:2px solid var(--ink);padding:2rem 0 3.4rem;font-size:.92rem}
-footer p{margin:0 0 .5rem}
-.dl{display:flex;gap:1.4rem;flex-wrap:wrap;margin:1.3rem 0 0}
+/* ---------- footer ---------- */
+footer{border-top:2px solid var(--ink);padding:2.3rem 0 3.6rem;font-size:.95rem;margin-top:1rem}
+footer p{margin:0 0 .6rem;max-width:52ch}
+.dl{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.5rem 0 0}
 .dl a{
-  border:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);
-  padding:.45rem .95rem;font-size:.88rem;color:var(--ink);font-weight:500;
+  border:1px solid var(--line-strong);padding:.5rem 1rem;font-size:.87rem;
+  color:var(--ink);font-weight:500;transition:background .15s,color .15s,border-color .15s;
 }
 .dl a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
+/* ---------- motion ---------- */
 @media(prefers-reduced-motion:no-preference){
-  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s .25s ease-out forwards}
-  .fade{opacity:0;animation:fade .6s 1.05s ease-out forwards}
+  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.15s cubic-bezier(.22,.8,.3,1) forwards}
+  .draw.d1{animation-delay:.28s}
+  .draw.d2{animation-delay:.62s}
+  .dim .val,.dim .lbl,.dim .tick{opacity:0;animation:fade .55s ease-out forwards}
+  .dim .lbl{animation-delay:.3s}
+  .dim .val-old,.dim .tick-old{animation-delay:1.15s}
+  .dim .val-new{animation-delay:1.5s}
+  .reveal{opacity:0;transform:translateY(9px);transition:opacity .55s ease-out,transform .55s ease-out}
+  .reveal.on{opacity:1;transform:none}
 }
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes fade{to{opacity:1}}
@@ -167,10 +169,15 @@ footer p{margin:0 0 .5rem}
 <main class="sheet">
 
   <header class="pad titleblock">
-    <h1>José Ladron de Guevara</h1>
-    <p class="role"
-       data-fr="Ingénieur projet, automatisation et optimisation des process"
-       data-en="Project engineer, automation and process optimisation">Ingénieur projet, automatisation et optimisation des process</p>
+    <div class="ident">
+      <img src="assets/photo.png" alt="José Ladron de Guevara" width="96" height="96">
+      <div>
+        <h1>José Ladron de Guevara</h1>
+        <p class="role"
+           data-fr="Ingénieur projet, automatisation et optimisation des process"
+           data-en="Project engineer, automation and process optimisation">Ingénieur projet, automatisation et optimisation des process</p>
+      </div>
+    </div>
     <div class="tb-grid">
       <div class="tb-cell">
         <b data-fr="Formation" data-en="Education">Formation</b>
@@ -200,26 +207,26 @@ footer p{margin:0 0 .5rem}
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
 
-    <p data-fr="Je suis ingénieur civil. Je passe mes journées sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main. J'écris les outils qui font ce travail à notre place."
-       data-en="I am a civil engineer. I spend my days on infrastructure projects where a huge share of the work still means comparing documents by hand. I write the tools that do that work for us.">Je suis ingénieur civil. Je passe mes journées sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main. J'écris les outils qui font ce travail à notre place.</p>
+    <p data-fr="Je suis ingénieur civil. Je travaille sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main. J'écris les outils qui font ce travail à notre place."
+       data-en="I am a civil engineer. I work on infrastructure projects where a huge share of the work still means comparing documents by hand. I write the tools that do that work for us.">Je suis ingénieur civil. Je travaille sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main. J'écris les outils qui font ce travail à notre place.</p>
 
-    <svg class="dim" viewBox="0 0 700 150" role="img"
-         aria-label="Temps de contrôle d'un plan : 2 min 45 s avant, 25 s après">
-      <line class="tick" x1="16" y1="34" x2="16" y2="120"/>
-      <line class="bar-old draw" x1="16" y1="52" x2="545" y2="52" pathLength="1"/>
-      <line class="tick mark-t" x1="545" y1="40" x2="545" y2="64"/>
-      <text class="old" x="557" y="60" font-size="24" font-weight="600">2 min 45 s</text>
-      <line class="bar-new draw" x1="16" y1="104" x2="96" y2="104" pathLength="1"/>
-      <line class="tick" x1="96" y1="92" x2="96" y2="116"/>
-      <text class="new" x="108" y="112" font-size="24" font-weight="600">25 s</text>
-      <text x="16" y="28" font-size="12.5" fill="#5c605e"
-            data-fr="contrôle manuel" data-en="manual check">contrôle manuel</text>
-      <text x="16" y="140" font-size="12.5" fill="#5c605e"
-            data-fr="avec l'outil" data-en="with the tool">avec l'outil</text>
-    </svg>
+    <div class="dimwrap">
+      <svg class="dim" viewBox="0 0 700 158" role="img"
+           aria-label="Temps de contrôle d'un plan d'exécution : 2 min 45 s avant, 25 s avec l'outil">
+        <line class="ext" x1="16" y1="30" x2="16" y2="140"/>
+        <text class="lbl" x="16" y="24" data-fr="Contrôle manuel" data-en="Manual check">Contrôle manuel</text>
+        <line class="bar-old draw d1" x1="16" y1="56" x2="545" y2="56" pathLength="1"/>
+        <line class="tick tick-old" x1="545" y1="42" x2="545" y2="70"/>
+        <text class="val val-old" x="558" y="64">2 min 45 s</text>
+        <line class="bar-new draw d2" x1="16" y1="112" x2="96" y2="112" pathLength="1"/>
+        <line class="tick" x1="96" y1="98" x2="96" y2="126"/>
+        <text class="val val-new" x="109" y="120">25 s</text>
+        <text class="lbl" x="16" y="150" data-fr="Avec l'outil" data-en="With the tool">Avec l'outil</text>
+      </svg>
+    </div>
     <p class="dimcap"
-       data-fr="Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil que j'ai développé pendant mon PFE."
-       data-en="Time to check one execution drawing on Line 16 of the Grand Paris Express, before and after the tool I built during my final-year placement.">Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil que j'ai développé pendant mon PFE.</p>
+       data-fr="Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil développé pendant mon stage de fin d'études."
+       data-en="Time to check one execution drawing on Line 16 of the Grand Paris Express, before and after the tool I built during my final-year placement.">Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil développé pendant mon stage de fin d'études.</p>
   </div>
 
   <!-- ============ EGIS ============ -->
@@ -241,9 +248,9 @@ footer p{margin:0 0 .5rem}
     </div>
 
     <div class="qty">
-      <div><strong>85 %</strong><span data-fr="de temps en moins par plan contrôlé" data-en="less time per drawing checked">de temps en moins par plan contrôlé</span></div>
-      <div><strong data-fr="35 h" data-en="35 h">35 h</strong><span data-fr="gagnées par campagne de contrôle" data-en="saved per review campaign">gagnées par campagne de contrôle</span></div>
-      <div><strong>587</strong><span data-fr="plans passés au crible sur un corpus de 1 300" data-en="drawings screened out of a 1,300-drawing corpus">plans passés au crible sur un corpus de 1 300</span></div>
+      <div class="reveal"><strong>85 %</strong><span data-fr="de temps en moins par plan contrôlé" data-en="less time per drawing checked">de temps en moins par plan contrôlé</span></div>
+      <div class="reveal"><strong>35 h</strong><span data-fr="gagnées par campagne de contrôle" data-en="saved per review campaign">gagnées par campagne de contrôle</span></div>
+      <div class="reveal"><strong>587</strong><span data-fr="plans passés au crible sur un corpus de 1 300" data-en="drawings screened out of a 1,300-drawing corpus">plans passés au crible sur un corpus de 1 300</span></div>
     </div>
 
     <div class="body">
@@ -252,19 +259,17 @@ footer p{margin:0 0 .5rem}
     </div>
 
     <div class="qty">
-      <div><strong>986</strong><span data-fr="réservations d'une gare traitées en 30 secondes" data-en="penetrations in one station processed in 30 seconds">réservations d'une gare traitées en 30 secondes</span></div>
-      <div><strong>73</strong><span data-fr="divergences d'affectation entre marchés" data-en="allocation discrepancies between contracts">divergences d'affectation entre marchés</span></div>
-      <div><strong>15</strong><span data-fr="doublons de codification invisibles à l'œil" data-en="coding duplicates invisible to the eye">doublons de codification invisibles à l'œil</span></div>
+      <div class="reveal"><strong>986</strong><span data-fr="réservations d'une gare traitées en 30 secondes" data-en="penetrations in one station processed in 30 seconds">réservations d'une gare traitées en 30 secondes</span></div>
+      <div class="reveal"><strong>73</strong><span data-fr="divergences d'affectation entre marchés" data-en="allocation discrepancies between contracts">divergences d'affectation entre marchés</span></div>
+      <div class="reveal"><strong>15</strong><span data-fr="doublons de codification invisibles à l'œil" data-en="coding duplicates invisible to the eye">doublons de codification invisibles à l'œil</span></div>
     </div>
 
-    <p class="tools">
-      <b data-fr="Outils" data-en="Tools">Outils</b> · Python, Dynamo, APIs tpPLM et Catenda, Autodesk Construction Cloud, IFC, Revit, Power BI
-    </p>
+    <p class="tools"><b data-fr="Outils" data-en="Tools">Outils</b> &nbsp;Python, Dynamo, APIs tpPLM et Catenda, Autodesk Construction Cloud, IFC, Revit, Power BI</p>
   </section>
 
   <!-- ============ GNA ============ -->
   <section class="pad">
-    <div class="zone"><i>New York</i><span>Guy Nordenson and Associates · 2024–2025</span></div>
+    <div class="zone"><i data-fr="New York" data-en="New York">New York</i><span>Guy Nordenson and Associates · 2024–2025</span></div>
     <h2 data-fr="Sauver du marbre déjà déclaré inutilisable"
         data-en="Saving marble already written off">Sauver du marbre déjà déclaré inutilisable</h2>
     <p class="meta"
@@ -283,26 +288,43 @@ footer p{margin:0 0 .5rem}
     </div>
 
     <div class="qty">
-      <div><strong>200 → 54</strong><span data-fr="psi de traction admissible après essais" data-en="psi allowable tensile stress after testing">psi de traction admissible après essais</span></div>
-      <div><strong data-fr="5 mois" data-en="5 months">5 mois</strong><span data-fr="de production évités par pièce conservée" data-en="of production avoided per piece kept">de production évités par pièce conservée</span></div>
-      <div><strong>7</strong><span data-fr="personnes dans l'agence, périmètre complet" data-en="people in the firm, full scope">personnes dans l'agence, périmètre complet</span></div>
+      <div class="reveal"><strong>200 → 54</strong><span data-fr="psi de traction admissible après essais" data-en="psi allowable tensile stress after testing">psi de traction admissible après essais</span></div>
+      <div class="reveal"><strong data-fr="5 mois" data-en="5 months">5 mois</strong><span data-fr="de production évités par pièce conservée" data-en="of production avoided per piece kept">de production évités par pièce conservée</span></div>
+      <div class="reveal"><strong>7</strong><span data-fr="personnes dans l'agence, périmètre complet" data-en="people in the firm, full scope">personnes dans l'agence, périmètre complet</span></div>
     </div>
 
-    <p class="tools">
-      <b data-fr="Outils" data-en="Tools">Outils</b> · ANSYS Mechanical, SAP2000, ETABS, Rhino, Grasshopper
-    </p>
+    <p class="tools"><b data-fr="Outils" data-en="Tools">Outils</b> &nbsp;ANSYS Mechanical, SAP2000, ETABS, Rhino, Grasshopper</p>
   </section>
 
   <!-- ============ PUBLICATION ============ -->
   <section class="pad">
-    <div class="zone"><i>Turin</i><span data-fr="Publication" data-en="Publication">Publication</span></div>
+    <div class="zone"><i data-fr="Turin" data-en="Turin">Turin</i><span data-fr="Publication" data-en="Publication">Publication</span></div>
     <h2>If Buildings Could Fly</h2>
     <p class="meta"
-       data-fr="Coécrit avec Guy Nordenson et Alexandra Steelman"
-       data-en="Co-authored with Guy Nordenson and Alexandra Steelman">Coécrit avec Guy Nordenson et Alexandra Steelman</p>
+       data-fr="Coécrit avec Guy Nordenson et Alexandra Steelman — déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi"
+       data-en="Co-authored with Guy Nordenson and Alexandra Steelman — lateral-torsional buckling of steel girders, built around Pier Luigi Nervi's Palazzo del Lavoro">Coécrit avec Guy Nordenson et Alexandra Steelman — déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi</p>
     <div class="body">
-      <p data-fr="Une étude du déversement des poutres métalliques, appuyée sur le Palazzo del Lavoro de Pier Luigi Nervi à Turin. Travailler sur un texte technique aux côtés de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : la précision d'une phrase compte autant que celle d'un calcul, parce que c'est la phrase qui sera lue."
-         data-en="A study of lateral-torsional buckling in steel girders, built around Pier Luigi Nervi's Palazzo del Lavoro in Turin. Working on a technical text alongside Guy Nordenson taught me something school had not: a sentence has to be as precise as a calculation, because the sentence is what gets read.">Une étude du déversement des poutres métalliques, appuyée sur le Palazzo del Lavoro de Pier Luigi Nervi à Turin. Travailler sur un texte technique aux côtés de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : la précision d'une phrase compte autant que celle d'un calcul, parce que c'est la phrase qui sera lue.</p>
+      <p data-fr="Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue."
+         data-en="Writing a technical text alongside Guy Nordenson taught me something school had not: a sentence has to be as precise as a calculation, because the sentence is what gets read.">Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue.</p>
+      <p data-fr="Mais l'article n'a été qu'une partie de ce que j'ai appris de lui. Pendant toute l'année, sur chacun des projets, Guy prenait le temps d'expliquer d'où venait une hypothèse, pourquoi une solution tenait et pourquoi une autre, plus élégante en apparence, ne tenait pas. Travailler à ses côtés au quotidien a été la meilleure formation que j'aie reçue, et il restera l'un des professeurs qui m'ont le plus marqué."
+         data-en="But the paper was only part of what I learned from him. All year, on every project, Guy took the time to explain where an assumption came from, why one solution held and why another, more elegant on the surface, did not. Working next to him day after day was the best training I have had, and he remains one of the teachers who marked me most.">Mais l'article n'a été qu'une partie de ce que j'ai appris de lui. Pendant toute l'année, sur chacun des projets, Guy prenait le temps d'expliquer d'où venait une hypothèse, pourquoi une solution tenait et pourquoi une autre, plus élégante en apparence, ne tenait pas. Travailler à ses côtés au quotidien a été la meilleure formation que j'aie reçue, et il restera l'un des professeurs qui m'ont le plus marqué.</p>
+    </div>
+  </section>
+
+  <!-- ============ VOYANSI ============ -->
+  <section class="pad">
+    <div class="zone"><i data-fr="Córdoba" data-en="Córdoba">Córdoba</i><span>Voyansi · 2022</span></div>
+    <h2 data-fr="Là où l'envie a commencé" data-en="Where the appetite started">Là où l'envie a commencé</h2>
+    <p class="meta"
+       data-fr="Projeteur BIM, Córdoba, Argentine — mon premier vrai poste"
+       data-en="BIM modeller, Córdoba, Argentina — my first real job">Projeteur BIM, Córdoba, Argentine — mon premier vrai poste</p>
+    <div class="body">
+      <p data-fr="J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite."
+         data-en="I was nineteen and seeing from the inside how a company actually runs: deadlines, reviews, the fact that a deliverable belongs to a team and not to a person. Seeing that early changes how you work afterwards.">J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite.</p>
+      <p data-fr="Mon travail consistait à produire des plans d'exécution de gradins de salles de cinéma à partir de maquettes 3D et de plans anciens. C'est là que je suis entré pour de bon dans les logiciels du métier. Et c'est là aussi que j'ai commencé à voir leurs limites : le temps que l'on passe à contourner un outil au lieu de concevoir avec lui."
+         data-en="My job was producing construction drawings for cinema seating tiers from 3D models and old drawings. That is where I properly got inside the software of the trade. And it is also where I started to see its limits: the time you spend working around a tool instead of designing with it.">Mon travail consistait à produire des plans d'exécution de gradins de salles de cinéma à partir de maquettes 3D et de plans anciens. C'est là que je suis entré pour de bon dans les logiciels du métier. Et c'est là aussi que j'ai commencé à voir leurs limites : le temps que l'on passe à contourner un outil au lieu de concevoir avec lui.</p>
+      <p data-fr="L'envie qui guide ma recherche aujourd'hui vient de là. Les logiciels de génie civil décident d'une bonne partie de nos journées. J'aimerais apporter ma pierre à les rendre plus efficaces."
+         data-en="The appetite that guides my search today comes from there. Civil engineering software decides a large part of our working days. I would like to do my part in making it better.">L'envie qui guide ma recherche aujourd'hui vient de là. Les logiciels de génie civil décident d'une bonne partie de nos journées. J'aimerais apporter ma pierre à les rendre plus efficaces.</p>
     </div>
   </section>
 
@@ -336,8 +358,8 @@ footer p{margin:0 0 .5rem}
       </div>
       <div class="row">
         <b data-fr="En dehors du bureau" data-en="Outside the office">En dehors du bureau</b>
-        <span data-fr="Formé en Argentine, en France et aux États-Unis · Échanges scolaires en Angleterre, en Argentine et au Brésil · Plus de sept sports en club fédéré"
-              data-en="Educated in Argentina, France and the USA · School exchanges in England, Argentina and Brazil · More than seven sports at federated club level">Formé en Argentine, en France et aux États-Unis · Échanges scolaires en Angleterre, en Argentine et au Brésil · Plus de sept sports en club fédéré</span>
+        <span data-fr="Formé en Argentine, en France et aux États-Unis · Trois échanges scolaires sur trois continents · Plus de sept sports en club fédéré"
+              data-en="Educated in Argentina, France and the USA · Three school exchanges on three continents · More than seven sports at federated club level">Formé en Argentine, en France et aux États-Unis · Trois échanges scolaires sur trois continents · Plus de sept sports en club fédéré</span>
       </div>
     </div>
   </section>
@@ -351,8 +373,8 @@ footer p{margin:0 0 .5rem}
       <a href="https://www.linkedin.com/in/jose-ladron-de-guevara">LinkedIn</a>
     </p>
     <div class="dl">
-      <a href="cv/CV_Jose_LADRON_DE_GUEVARA_FR.pdf" data-fr="Télécharger le CV (français)" data-en="Download CV (French)">Télécharger le CV (français)</a>
-      <a href="cv/CV_Jose_LADRON_DE_GUEVARA_EN.pdf" data-fr="Télécharger le CV (anglais)" data-en="Download CV (English)">Télécharger le CV (anglais)</a>
+      <a href="cv/CV_Jose_LADRON_DE_GUEVARA_FR.pdf" data-fr="CV en français (PDF)" data-en="CV in French (PDF)">CV en français (PDF)</a>
+      <a href="cv/CV_Jose_LADRON_DE_GUEVARA_EN.pdf" data-fr="CV en anglais (PDF)" data-en="CV in English (PDF)">CV en anglais (PDF)</a>
     </div>
   </footer>
 
@@ -385,6 +407,22 @@ footer p{margin:0 0 .5rem}
   var saved = null;
   try { saved = localStorage.getItem('lang'); } catch (e) {}
   if (saved === 'en') apply('en');
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e, i) {
+      if (!e.isIntersecting) return;
+      var d = (Array.prototype.indexOf.call(e.target.parentNode.children, e.target)) * 90;
+      setTimeout(function () { e.target.classList.add('on'); }, d);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
