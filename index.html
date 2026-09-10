@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>José Ladron de Guevara — Ingénieur projet</title>
+<title>José Ladron de Guevara · Ingénieur projet</title>
 <meta name="description" content="Ingénieur civil (École des Ponts ParisTech). J'automatise le contrôle et la coordination sur des projets d'infrastructure.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,8 +81,17 @@ h1{
 .badge i{width:.42rem;height:.42rem;border-radius:50%;background:#2f7d4f;flex:none}
 
 /* ---------- logos ---------- */
-.logo{height:1.65rem;width:auto;max-width:7.5rem;object-fit:contain;flex:none}
+/* Chaque logo garde ses propres proportions. La boite est calee sur le
+   contenu reel du fichier, object-fit:cover retire le blanc du calque. */
+.logo{object-fit:cover;object-position:center;flex:none}
 .logo[data-missing]{display:none}
+.logo-egis{width:3.56rem;height:1.37rem}
+.logo-gna{width:8.35rem;height:.62rem}
+.logo-voyansi{width:2.92rem;height:1.68rem}
+.logo-enpc{width:1.62rem;height:2.75rem}
+.logo-unc{width:3rem;height:1.5rem}
+@media(max-width:560px){.logo-gna{width:6.6rem;height:.49rem}}
+.schools{display:flex;align-items:flex-end;gap:.85rem;margin-top:.7rem}
 
 /* ---------- chips ---------- */
 .chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 0 2.6rem;margin:0;list-style:none}
@@ -104,7 +113,7 @@ details summary{
 }
 details summary::-webkit-details-marker{display:none}
 details summary::after{content:"+";font-weight:600;font-size:1rem;color:var(--ink-faint)}
-details[open] summary::after{content:"–"}
+details[open] summary::after{content:"−"}
 details .body{padding-bottom:.3rem}
 details .body p:last-child{margin-bottom:1rem}
 
@@ -137,7 +146,7 @@ details .body p:last-child{margin-bottom:1rem}
 
 /* ---------- sections ---------- */
 section{padding-top:3.1rem;border-top:1px solid var(--line)}
-.zone{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.zone{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;row-gap:.45rem;margin-bottom:1.2rem}
 .zone i{
   font-style:normal;color:var(--ink);border:1px solid var(--line-strong);
   padding:.1rem .5rem;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;
@@ -218,6 +227,10 @@ footer p{margin:0 0 .6rem;max-width:52ch}
       <div class="tb-cell">
         <b data-fr="Formation" data-en="Education">Formation</b>
         École des Ponts ParisTech<br>Universidad Nacional de Córdoba
+        <span class="schools">
+          <img class="logo logo-enpc" src="logos/ENPC.png" alt="École nationale des ponts et chaussées">
+          <img class="logo logo-unc" src="logos/UNC.png" alt="Universidad Nacional de Córdoba">
+        </span>
       </div>
       <div class="tb-cell">
         <b data-fr="Basé à" data-en="Based in">Basé à</b>
@@ -268,12 +281,12 @@ footer p{margin:0 0 .6rem;max-width:52ch}
 
   <!-- ============ EGIS ============ -->
   <section class="pad">
-    <div class="zone"><img class="logo" src="logos/egis.png" alt="Egis"><i>Paris</i><span>Egis · 2026</span></div>
+    <div class="zone"><img class="logo logo-egis" src="logos/egis.png" alt="Egis"><i>Paris</i><span>Egis · 2026</span></div>
     <h2 data-fr="Contrôler 1 300 plans sans les ouvrir un par un"
         data-en="Checking 1,300 drawings without opening them one by one">Contrôler 1 300 plans sans les ouvrir un par un</h2>
     <p class="meta"
-       data-fr="Coordinateur BIM, Ligne 16 du Grand Paris Express — 10 gares, 32 ouvrages annexes, 160 personnes côté maîtrise d'œuvre"
-       data-en="BIM coordinator, Line 16 of the Grand Paris Express — 10 stations, 32 ancillary structures, 160 people on the engineering side">Coordinateur BIM, Ligne 16 du Grand Paris Express — 10 gares, 32 ouvrages annexes, 160 personnes côté maîtrise d'œuvre</p>
+       data-fr="Coordinateur BIM, Ligne 16 du Grand Paris Express : 10 gares, 32 ouvrages annexes, 160 personnes côté maîtrise d'œuvre"
+       data-en="BIM coordinator, Line 16 of the Grand Paris Express: 10 stations, 32 ancillary structures, 160 people on the engineering side">Coordinateur BIM, Ligne 16 du Grand Paris Express : 10 gares, 32 ouvrages annexes, 160 personnes côté maîtrise d'œuvre</p>
 
     <div class="body">
       <p data-fr="Sur un chantier de cette taille, chaque plan d'exécution existe à plusieurs endroits à la fois : dans la GED, dans la maquette native, dans le cartouche imprimé. Ces trois versions doivent dire la même chose. En pratique elles divergent, et quelqu'un doit s'en apercevoir avant que l'entreprise ne construise à partir du mauvais indice."
@@ -310,12 +323,12 @@ footer p{margin:0 0 .6rem;max-width:52ch}
 
   <!-- ============ GNA ============ -->
   <section class="pad">
-    <div class="zone"><img class="logo" src="logos/gna.png" alt="Guy Nordenson and Associates"><i data-fr="New York" data-en="New York">New York</i><span>Guy Nordenson and Associates · 2024–2025</span></div>
+    <div class="zone"><img class="logo logo-gna" src="logos/gna.png" alt="Guy Nordenson and Associates"><i data-fr="New York" data-en="New York">New York</i><span>Guy Nordenson and Associates · 2024–2025</span></div>
     <h2 data-fr="Sauver du marbre déjà déclaré inutilisable"
         data-en="Saving marble already written off">Sauver du marbre déjà déclaré inutilisable</h2>
     <p class="meta"
-       data-fr="Ingénieur structure, New York — Emanuel Nine Memorial, Charleston"
-       data-en="Structural engineer, New York — Emanuel Nine Memorial, Charleston">Ingénieur structure, New York — Emanuel Nine Memorial, Charleston</p>
+       data-fr="Ingénieur structure, New York · Emanuel Nine Memorial, Charleston"
+       data-en="Structural engineer, New York · Emanuel Nine Memorial, Charleston">Ingénieur structure, New York · Emanuel Nine Memorial, Charleston</p>
 
     <div class="body">
       <p data-fr="Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des pièces devenait, sur le papier, inutilisable."
@@ -358,8 +371,8 @@ footer p{margin:0 0 .6rem;max-width:52ch}
     <div class="zone"><i data-fr="Turin" data-en="Turin">Turin</i><span data-fr="Publication" data-en="Publication">Publication</span></div>
     <h2>If Buildings Could Fly</h2>
     <p class="meta"
-       data-fr="Coécrit avec Guy Nordenson et Alexandra Steelman — déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi"
-       data-en="Co-authored with Guy Nordenson and Alexandra Steelman — lateral-torsional buckling of steel girders, built around Pier Luigi Nervi's Palazzo del Lavoro">Coécrit avec Guy Nordenson et Alexandra Steelman — déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi</p>
+       data-fr="Coécrit avec Guy Nordenson et Alexandra Steelman : déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi"
+       data-en="Co-authored with Guy Nordenson and Alexandra Steelman: lateral-torsional buckling of steel girders, built around Pier Luigi Nervi's Palazzo del Lavoro">Coécrit avec Guy Nordenson et Alexandra Steelman : déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi</p>
     <div class="body">
       <p data-fr="Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue."
          data-en="Writing a technical text alongside Guy Nordenson taught me something school had not: a sentence has to be as precise as a calculation, because the sentence is what gets read.">Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue.</p>
@@ -370,11 +383,11 @@ footer p{margin:0 0 .6rem;max-width:52ch}
 
   <!-- ============ VOYANSI ============ -->
   <section class="pad">
-    <div class="zone"><img class="logo" src="logos/voyansi.png" alt="Voyansi"><i data-fr="Córdoba" data-en="Córdoba">Córdoba</i><span>Voyansi · 2022</span></div>
+    <div class="zone"><img class="logo logo-voyansi" src="logos/voyansi.png" alt="Voyansi"><i data-fr="Córdoba" data-en="Córdoba">Córdoba</i><span>Voyansi · 2022</span></div>
     <h2 data-fr="Là où l'envie a commencé" data-en="Where the appetite started">Là où l'envie a commencé</h2>
     <p class="meta"
-       data-fr="Projeteur BIM, Córdoba, Argentine — mon premier vrai poste"
-       data-en="BIM modeller, Córdoba, Argentina — my first real job">Projeteur BIM, Córdoba, Argentine — mon premier vrai poste</p>
+       data-fr="Projeteur BIM, Córdoba, Argentine : mon premier vrai poste"
+       data-en="BIM modeller, Córdoba, Argentina: my first real job">Projeteur BIM, Córdoba, Argentine : mon premier vrai poste</p>
     <div class="body">
       <p data-fr="J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite."
          data-en="I was nineteen and seeing from the inside how a company actually runs: deadlines, reviews, the fact that a deliverable belongs to a team and not to a person. Seeing that early changes how you work afterwards.">J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite.</p>
@@ -454,8 +467,8 @@ footer p{margin:0 0 .6rem;max-width:52ch}
     });
     document.documentElement.lang = lang;
     document.title = lang === 'en'
-      ? 'José Ladron de Guevara — Project engineer'
-      : 'José Ladron de Guevara — Ingénieur projet';
+      ? 'José Ladron de Guevara · Project engineer'
+      : 'José Ladron de Guevara · Ingénieur projet';
     buttons.forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
