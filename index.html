@@ -72,6 +72,42 @@ h1{
   .tb-cell:nth-child(2n){border-right:0}
 }
 
+/* ---------- availability badge ---------- */
+.badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.76rem;font-weight:500;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--ink-soft);border:1px solid var(--line-strong);padding:.28rem .7rem;margin-bottom:1.1rem;
+}
+.badge i{width:.42rem;height:.42rem;border-radius:50%;background:#2f7d4f;flex:none}
+
+/* ---------- logos ---------- */
+.logo{height:1.65rem;width:auto;max-width:7.5rem;object-fit:contain;flex:none}
+.logo[data-missing]{display:none}
+
+/* ---------- chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 0 2.6rem;margin:0;list-style:none}
+.chips li{
+  font-size:.79rem;color:var(--ink-soft);border:1px solid var(--line);
+  padding:.24rem .6rem;background:#fbfbfa;
+}
+.chips li.head{
+  border:0;background:none;color:var(--ink-faint);padding-left:0;
+  letter-spacing:.05em;text-transform:uppercase;font-size:.71rem;font-weight:500;
+  display:flex;align-items:center;
+}
+
+/* ---------- disclosure ---------- */
+details{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 1.7rem;max-width:63ch}
+details summary{
+  cursor:pointer;list-style:none;padding:.72rem 0;font-size:.88rem;font-weight:500;
+  color:var(--blue);display:flex;align-items:center;gap:.5rem;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-weight:600;font-size:1rem;color:var(--ink-faint)}
+details[open] summary::after{content:"–"}
+details .body{padding-bottom:.3rem}
+details .body p:last-child{margin-bottom:1rem}
+
 /* ---------- switch ---------- */
 .switch{display:flex;margin:0 0 2.2rem;border:1px solid var(--line-strong);width:max-content}
 .switch button{
@@ -202,6 +238,7 @@ footer p{margin:0 0 .6rem;max-width:52ch}
   </header>
 
   <div class="pad lead">
+    <p class="badge"><i></i><span data-fr="Disponible pour un nouveau poste" data-en="Available for a new role">Disponible pour un nouveau poste</span></p>
     <div class="switch" role="group" aria-label="Langue / Language">
       <button type="button" data-lang="fr" aria-pressed="true">FR</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -231,7 +268,7 @@ footer p{margin:0 0 .6rem;max-width:52ch}
 
   <!-- ============ EGIS ============ -->
   <section class="pad">
-    <div class="zone"><i>Paris</i><span>Egis · 2026</span></div>
+    <div class="zone"><img class="logo" src="logos/egis.png" alt="Egis"><i>Paris</i><span>Egis · 2026</span></div>
     <h2 data-fr="Contrôler 1 300 plans sans les ouvrir un par un"
         data-en="Checking 1,300 drawings without opening them one by one">Contrôler 1 300 plans sans les ouvrir un par un</h2>
     <p class="meta"
@@ -264,12 +301,16 @@ footer p{margin:0 0 .6rem;max-width:52ch}
       <div class="reveal"><strong>15</strong><span data-fr="doublons de codification invisibles à l'œil" data-en="coding duplicates invisible to the eye">doublons de codification invisibles à l'œil</span></div>
     </div>
 
-    <p class="tools"><b data-fr="Outils" data-en="Tools">Outils</b> &nbsp;Python, Dynamo, APIs tpPLM et Catenda, Autodesk Construction Cloud, IFC, Revit, Power BI</p>
+    <ul class="chips">
+      <li class="head" data-fr="Outils" data-en="Tools">Outils</li>
+      <li>Python</li><li>Dynamo</li><li>API tpPLM</li><li>API Catenda</li>
+      <li>Autodesk Construction Cloud</li><li>IFC</li><li>Revit</li><li>Power BI</li>
+    </ul>
   </section>
 
   <!-- ============ GNA ============ -->
   <section class="pad">
-    <div class="zone"><i data-fr="New York" data-en="New York">New York</i><span>Guy Nordenson and Associates · 2024–2025</span></div>
+    <div class="zone"><img class="logo" src="logos/gna.png" alt="Guy Nordenson and Associates"><i data-fr="New York" data-en="New York">New York</i><span>Guy Nordenson and Associates · 2024–2025</span></div>
     <h2 data-fr="Sauver du marbre déjà déclaré inutilisable"
         data-en="Saving marble already written off">Sauver du marbre déjà déclaré inutilisable</h2>
     <p class="meta"
@@ -279,8 +320,21 @@ footer p{margin:0 0 .6rem;max-width:52ch}
     <div class="body">
       <p data-fr="Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des pièces devenait, sur le papier, inutilisable."
          data-en="The memorial honours the nine people killed in the 2015 attack on Mother Emanuel AME Church. Two long, custom-cut marble benches are its heart. Mid-design, testing revealed internal defects in the stone: allowable tensile stress dropped from 200 to 54 psi. On paper, a large share of the pieces became unusable.">Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des pièces devenait, sur le papier, inutilisable.</p>
-      <p data-fr="Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai repris l'analyse sous ANSYS avec un modèle volumique complet : contacts non linéaires entre blocs, joints de dilatation en polyuréthane dont j'ai calibré le comportement hyperélastique sur les essais de compression, et réparations locales modélisées explicitement."
-         data-en="Each piece takes around five months to produce. Replacing them all meant delaying the project by the same amount. I rebuilt the analysis in ANSYS as a full solid model: non-linear contacts between blocks, polyurethane expansion joints whose hyperelastic behaviour I calibrated against compression tests, and local repairs modelled explicitly.">Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai repris l'analyse sous ANSYS avec un modèle volumique complet : contacts non linéaires entre blocs, joints de dilatation en polyuréthane dont j'ai calibré le comportement hyperélastique sur les essais de compression, et réparations locales modélisées explicitement.</p>
+      <p data-fr="Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai donc repris l'analyse depuis le début."
+         data-en="Each piece takes around five months to produce. Replacing them all meant delaying the project by the same amount. So I rebuilt the analysis from scratch.">Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai donc repris l'analyse depuis le début.</p>
+    </div>
+
+    <details>
+      <summary data-fr="Le détail technique" data-en="The technical detail">Le détail technique</summary>
+      <div class="body">
+        <p data-fr="Modèle volumique complet sous ANSYS Mechanical, maillage tétraédrique, avec trois types de contacts entre blocs de marbre selon qu'ils devaient glisser, se séparer ou rester solidaires. Les joints de dilatation en polyuréthane ont été modélisés comme des disques hyperélastiques, avec une loi de Mooney-Rivlin à trois paramètres calibrée sur les essais de compression uniaxiale du laboratoire."
+           data-en="A full solid model in ANSYS Mechanical, tetrahedral mesh, with three contact types between marble blocks depending on whether they had to slide, separate or stay bonded. The polyurethane expansion joints were modelled as hyperelastic discs, using a three-parameter Mooney-Rivlin law calibrated against the lab's uniaxial compression tests.">Modèle volumique complet sous ANSYS Mechanical, maillage tétraédrique, avec trois types de contacts entre blocs de marbre selon qu'ils devaient glisser, se séparer ou rester solidaires. Les joints de dilatation en polyuréthane ont été modélisés comme des disques hyperélastiques, avec une loi de Mooney-Rivlin à trois paramètres calibrée sur les essais de compression uniaxiale du laboratoire.</p>
+        <p data-fr="Le chargement thermique s'est révélé plus critique que le séisme. Les zones de marbre jugées non structurelles ont été retirées du modèle plutôt que dégradées, et les réparations locales ont été modélisées explicitement avec leurs goujons."
+           data-en="Thermal loading turned out to be more critical than seismic. Marble zones judged non-structural were removed from the model rather than degraded, and the local repairs were modelled explicitly with their dowels.">Le chargement thermique s'est révélé plus critique que le séisme. Les zones de marbre jugées non structurelles ont été retirées du modèle plutôt que dégradées, et les réparations locales ont été modélisées explicitement avec leurs goujons.</p>
+      </div>
+    </details>
+
+    <div class="body">
       <p data-fr="Le modèle a montré que la plupart des pièces tenaient, à condition d'introduire les bonnes discontinuités. Elles sont restées dans l'ouvrage."
          data-en="The model showed that most pieces held, provided the right discontinuities were introduced. They stayed in the built work.">Le modèle a montré que la plupart des pièces tenaient, à condition d'introduire les bonnes discontinuités. Elles sont restées dans l'ouvrage.</p>
       <p data-fr="L'agence comptait sept personnes. J'y ai fait les calculs, les notes, les planches et les présentations, et j'ai suivi les échanges avec l'architecte, le laboratoire d'essais et le client. En parallèle : revue des documents d'exécution de l'ambassade des États-Unis à Paris, avant-projet d'un théâtre en Floride, et supports de sculptures monumentales pour le Guggenheim."
@@ -293,7 +347,10 @@ footer p{margin:0 0 .6rem;max-width:52ch}
       <div class="reveal"><strong>7</strong><span data-fr="personnes dans l'agence, périmètre complet" data-en="people in the firm, full scope">personnes dans l'agence, périmètre complet</span></div>
     </div>
 
-    <p class="tools"><b data-fr="Outils" data-en="Tools">Outils</b> &nbsp;ANSYS Mechanical, SAP2000, ETABS, Rhino, Grasshopper</p>
+    <ul class="chips">
+      <li class="head" data-fr="Outils" data-en="Tools">Outils</li>
+      <li>ANSYS Mechanical</li><li>SAP2000</li><li>ETABS</li><li>Rhino</li><li>Grasshopper</li>
+    </ul>
   </section>
 
   <!-- ============ PUBLICATION ============ -->
@@ -313,7 +370,7 @@ footer p{margin:0 0 .6rem;max-width:52ch}
 
   <!-- ============ VOYANSI ============ -->
   <section class="pad">
-    <div class="zone"><i data-fr="Córdoba" data-en="Córdoba">Córdoba</i><span>Voyansi · 2022</span></div>
+    <div class="zone"><img class="logo" src="logos/voyansi.png" alt="Voyansi"><i data-fr="Córdoba" data-en="Córdoba">Córdoba</i><span>Voyansi · 2022</span></div>
     <h2 data-fr="Là où l'envie a commencé" data-en="Where the appetite started">Là où l'envie a commencé</h2>
     <p class="meta"
        data-fr="Projeteur BIM, Córdoba, Argentine — mon premier vrai poste"
@@ -382,6 +439,11 @@ footer p{margin:0 0 .6rem;max-width:52ch}
 
 <script>
 (function () {
+  document.querySelectorAll('.logo').forEach(function (img) {
+    img.addEventListener('error', function () { img.setAttribute('data-missing', ''); });
+    if (img.complete && img.naturalWidth === 0) img.setAttribute('data-missing', '');
+  });
+
   var nodes = document.querySelectorAll('[data-fr][data-en]');
   var buttons = document.querySelectorAll('.switch button');
 
