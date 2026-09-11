@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>José Ladron de Guevara · Ingénieur projet</title>
+<title>José Ladrón de Guevara · Ingénieur projet</title>
 <meta name="description" content="Ingénieur civil (École des Ponts ParisTech). J'automatise le contrôle et la coordination sur des projets d'infrastructure.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@ body{
 }
 @media(max-width:640px){body{font-size:16px}}
 a{color:var(--blue);text-decoration:none}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 p{margin:0 0 1.05rem}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0}
 
@@ -54,28 +54,27 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0}
 }
 .brand{font-family:var(--serif);font-size:1.06rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;
   white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
-.topnav{display:flex;align-items:center;gap:1.35rem}
-.topnav a{font-size:.83rem;font-weight:500;color:var(--ink-soft);transition:color .15s}
-.topnav a:hover{color:var(--ink)}
-@media(max-width:720px){.topnav a.opt{display:none}}
+.topnav{display:flex;align-items:center;gap:1rem}
 @media(max-width:560px){
   .topbar .in{gap:.55rem}
   .topnav{gap:.55rem}
   .brand{font-size:.9rem}
-  .cta{padding:.4rem .8rem}
+  .topnav a.cta{padding:.4rem .8rem}
 }
-.cta{
+/* le selecteur de classe seul perdait contre .topnav a : le libelle passait en gris */
+.topnav a.cta{
   font-size:.79rem;font-weight:600;letter-spacing:.01em;
   background:var(--ink);color:#fff;padding:.42rem 1rem;border-radius:999px;
   transition:background .15s;white-space:nowrap;
 }
-.cta:hover{background:#33373c}
+.topnav a.cta:hover{background:#33373c}
 .switch{display:flex;border:1px solid var(--line-strong);border-radius:var(--r-sm);overflow:hidden}
 .switch button{
   font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.03em;
-  padding:.24rem .55rem;background:none;border:0;cursor:pointer;color:var(--ink-faint);
+  padding:.24rem .5rem;background:none;border:0;cursor:pointer;color:var(--ink-faint);
   transition:background .15s,color .15s;
 }
+.switch button+button{border-left:1px solid var(--line-strong)}
 .switch button[aria-pressed="true"]{background:var(--ink);color:#fff}
 
 /* ---------- ossature ---------- */
@@ -94,14 +93,18 @@ section[id]{scroll-margin-top:4.8rem}
 
 /* ---------- en-tete ---------- */
 .hero{margin-bottom:1.4rem}
-.who{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.15rem}
+.who{display:flex;align-items:center;gap:1.6rem;margin-bottom:1.35rem;flex-wrap:wrap}
 .portrait{position:relative;flex:none}
-.portrait img{width:5.6rem;height:5.6rem;border-radius:50%;object-fit:cover;filter:saturate(.94);border:1px solid var(--line)}
+.portrait img{width:11.2rem;height:11.2rem;border-radius:50%;object-fit:cover;filter:saturate(.94);border:1px solid var(--line)}
 .portrait i{
-  position:absolute;right:.2rem;bottom:.2rem;width:.85rem;height:.85rem;border-radius:50%;
-  background:var(--ok);border:2.5px solid var(--paper);
+  position:absolute;right:.55rem;bottom:.55rem;width:1.15rem;height:1.15rem;border-radius:50%;
+  background:var(--ok);border:3px solid var(--paper);
 }
-@media(max-width:560px){.portrait img{width:4.4rem;height:4.4rem}}
+@media(max-width:560px){
+  .portrait img{width:8.6rem;height:8.6rem}
+  .portrait i{width:.95rem;height:.95rem;right:.4rem;bottom:.4rem}
+  .who{gap:1.1rem}
+}
 .badge{
   display:inline-flex;align-items:center;gap:.45rem;
   font-size:.71rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
@@ -120,31 +123,21 @@ h1{font-size:clamp(1.9rem,5.2vw,2.6rem);line-height:1.06;letter-spacing:-.022em;
 .fact b{font-weight:500;color:var(--ink)}
 .fact s{color:var(--line-strong);text-decoration:none}
 
-/* ---------- formation ---------- */
-.edu{
-  display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .95rem;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:.85rem 0;margin-bottom:2.1rem;
-}
-.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
-.school{display:inline-flex;align-items:center;gap:.55rem;font-size:.83rem;color:var(--ink)}
-.school+.school{border-left:1px solid var(--line);padding-left:.95rem}
-
 /* ---------- logos ---------- */
 /* Chaque logo garde ses proportions et ses couleurs. Les fichiers ne sont pas
    retouches : la boite est calee sur le contenu reel et object-fit:cover
    ecarte le blanc du calque. Tailles a aire optique egale. */
 .logo{object-fit:cover;object-position:center;flex:none}
 .logo[data-missing]{display:none}
-.logo-egis{width:3.56rem;height:1.37rem}
-.logo-gna{width:8.35rem;height:.62rem}
-.logo-voyansi{width:2.92rem;height:1.68rem}
+.logo-egis{width:5.70rem;height:2.19rem}
+.logo-gna{width:13.36rem;height:.99rem}
+.logo-voyansi{width:4.67rem;height:2.69rem}
 .crop{display:inline-block;overflow:hidden;flex:none;line-height:0}
 .crop[data-missing]{display:none}
-.crop-enpc{width:27.7px;height:24px}
-.crop-enpc img{width:51.6px;height:auto;max-width:none;display:block;margin:-4.3px 0 0 -12px}
-.logo-unc{width:2.4rem;height:1.2rem}
-@media(max-width:560px){.logo-gna{width:6.6rem;height:.49rem}}
+.crop-enpc{width:44.3px;height:38.4px}
+.crop-enpc img{width:82.6px;height:auto;max-width:none;display:block;margin:-6.9px 0 0 -19.2px}
+.logo-unc{width:3.84rem;height:1.92rem}
+@media(max-width:560px){.logo-gna{width:10.56rem;height:.78rem}}
 
 /* ---------- manifeste ---------- */
 .manifesto{
@@ -158,6 +151,8 @@ h1{font-size:clamp(1.9rem,5.2vw,2.6rem);line-height:1.06;letter-spacing:-.022em;
 
 /* ---------- dessin de cotes ---------- */
 .dimwrap{margin-top:1.7rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.dimlead{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 1.1rem}
 .dim{width:100%;height:auto;display:block;max-width:38rem}
 .dim .tick{stroke:var(--ink);stroke-width:1}
 .dim .tick-old{stroke:var(--mark)}
@@ -178,6 +173,7 @@ h1{font-size:clamp(1.9rem,5.2vw,2.6rem);line-height:1.06;letter-spacing:-.022em;
 .sechead .num{font-family:var(--serif);font-size:.8rem;color:var(--ink-faint);letter-spacing:.1em}
 .sechead .range{font-size:.74rem;color:var(--ink-faint);letter-spacing:.05em;text-transform:uppercase;
   border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;background:var(--sheet);white-space:nowrap}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
 
 /* ---------- fiche d'experience ---------- */
 .case{margin-bottom:1.5rem;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
@@ -212,14 +208,13 @@ h1{font-size:clamp(1.9rem,5.2vw,2.6rem);line-height:1.06;letter-spacing:-.022em;
 .chips li.head{border:0;background:none;color:var(--ink-faint);padding-left:0;
   letter-spacing:.08em;text-transform:uppercase;font-size:.68rem;font-weight:600;display:flex;align-items:center}
 
-/* ---------- repli technique ---------- */
-details{border-top:1px solid var(--line);margin:1.2rem 0 0}
-summary{cursor:pointer;list-style:none;padding:.7rem 0 0;font-size:.83rem;font-weight:500;
-  color:var(--blue);display:flex;align-items:center;gap:.45rem}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-weight:600;font-size:.95rem;color:var(--ink-faint)}
-details[open] summary::after{content:"−"}
-details .body{padding-top:.75rem;font-size:.92rem}
+/* ---------- reference d'un poste ---------- */
+.ref{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .6rem;
+  margin-top:1.3rem;padding-top:1.05rem;border-top:1px solid var(--line);font-size:.81rem}
+.ref .lbl{font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
+.ref a{font-weight:600}
+.ref a:hover{text-decoration:underline}
+.ref .who-role{color:var(--ink-soft)}
 
 /* ---------- interlude publication ---------- */
 .interlude{background:var(--dark);color:#e9e8e4;border-radius:var(--r);padding:2.2rem 2.1rem;margin:1.5rem 0}
@@ -231,6 +226,45 @@ details .body{padding-top:.75rem;font-size:.92rem}
   font-family:var(--serif);font-style:italic;font-size:1.06rem;line-height:1.55;color:#dedcd7}
 .interlude .body{color:#b6b5b0;font-size:.93rem}
 .interlude .body p:last-child{margin-bottom:0}
+.btn-dark{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;
+  font-size:.83rem;font-weight:600;color:#dceaf8;
+  border:1px solid #4d7db3;border-radius:999px;padding:.5rem 1.1rem;transition:background .15s,border-color .15s}
+.btn-dark:hover{background:#1f2a36;border-color:#7aa6d4}
+
+/* ---------- formation ---------- */
+.edulist{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.6rem}
+@media(max-width:720px){.edulist{grid-template-columns:1fr}}
+.eduitem{background:#fafaf9;border:1px solid var(--line);border-radius:var(--r-sm);padding:1.25rem 1.3rem}
+.eduitem .top{display:flex;align-items:center;gap:.85rem;min-height:2.6rem;margin-bottom:.85rem}
+.eduitem h3{font-family:var(--serif);font-size:1.12rem;letter-spacing:-.012em;margin:0 0 .3rem}
+.eduitem .deg{display:block;font-size:.83rem;color:var(--ink-soft)}
+.eduitem .deg+.deg{margin-top:.3rem}
+.eduitem .yrs{display:block;font-size:.74rem;color:var(--ink-faint);letter-spacing:.04em;margin-top:.45rem}
+.rank{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.4rem;
+  margin-top:.9rem;padding:1.3rem 1.4rem;background:var(--blue-wash);
+  border:1px solid #d4dfee;border-radius:var(--r-sm)}
+.rank b{font-family:var(--serif);font-size:2.1rem;font-weight:600;letter-spacing:-.025em;
+  line-height:1;color:var(--blue);flex:none}
+.rank .txt{font-size:.85rem;color:var(--ink-soft);flex:1 1 18rem;min-width:0}
+.certlink{display:inline-flex;align-items:center;gap:.45rem;flex:none;
+  font-size:.79rem;font-weight:600;color:var(--blue);
+  border:1px solid #c3d3e8;background:var(--sheet);border-radius:999px;padding:.42rem 1rem;
+  transition:border-color .15s,background .15s}
+.certlink:hover{border-color:var(--blue);background:#fff}
+.certlink[data-missing]{display:none}
+
+/* ---------- langues ---------- */
+.langs{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+@media(max-width:720px){.langs{grid-template-columns:1fr}}
+.lang{background:var(--sheet);border:1px solid var(--line);border-radius:var(--r);
+  padding:1.7rem 1.6rem;display:flex;flex-direction:column;align-items:flex-start}
+.lang .name{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.015em;color:var(--ink)}
+.lang .lvl{font-family:var(--serif);font-size:3.3rem;font-weight:600;line-height:1;
+  letter-spacing:-.03em;color:var(--blue);margin:.55rem 0 .2rem}
+.lang .lvl.word{font-size:2rem}
+.lang .score{font-size:.83rem;color:var(--ink-soft)}
+.lang .certlink{margin-top:auto;padding-top:.42rem}
+.lang .score{margin-bottom:1.1rem}
 
 /* ---------- competences ---------- */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
@@ -239,10 +273,9 @@ details .body{padding-top:.75rem;font-size:.92rem}
 .skill h3{font-family:Inter,sans-serif;font-size:.92rem;font-weight:600;letter-spacing:-.005em;margin:0 0 .5rem;color:var(--ink)}
 .skill p{font-size:.83rem;color:var(--ink-soft);margin:0 0 .85rem}
 .skill .chips{margin-top:0}
-.personal{margin-top:.9rem;padding:1.3rem 1.5rem}
-.personal div+div{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--line)}
-.personal b{display:block;font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.2rem}
-.personal span{font-size:.88rem;color:var(--ink-soft)}
+.personal{margin-top:.9rem;padding:1.5rem 1.6rem}
+.personal b{display:block;font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.5rem}
+.personal p{font-size:.88rem;color:var(--ink-soft);margin:0}
 
 /* ---------- contact ---------- */
 .contact{text-align:center;padding:2.8rem 2rem}
@@ -254,8 +287,6 @@ details .body{padding-top:.75rem;font-size:.92rem}
 .btn.solid:hover{background:#33373c}
 .btn.ghost{background:none;color:var(--ink);border:1px solid var(--line-strong)}
 .btn.ghost:hover{border-color:var(--ink)}
-.dl{margin-top:1.7rem;padding-top:1.2rem;border-top:1px solid var(--line);
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem .9rem;font-size:.8rem;color:var(--ink-faint)}
 
 footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:center;font-size:.76rem;color:var(--ink-faint)}
 
@@ -279,15 +310,14 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
 
 <header class="topbar">
   <div class="in">
-    <a class="brand" href="#">José Ladron de Guevara</a>
+    <a class="brand" href="#">José Ladrón de Guevara</a>
     <nav class="topnav">
-      <a class="opt" href="#parcours" data-fr="Récits" data-en="Stories">Récits</a>
-      <a class="opt" href="#competences" data-fr="Compétences" data-en="Skills">Compétences</a>
-      <div class="switch" role="group" aria-label="Langue / Language">
-        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <div class="switch" role="group" aria-label="Langue / Language / Idioma">
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
       </div>
-      <a class="cta" href="#contact" data-fr="Discuter" data-en="Get in touch">Discuter</a>
+      <a class="cta" href="#contact" data-fr="Discuter" data-en="Get in touch" data-es="Hablemos">Discuter</a>
     </nav>
   </div>
 </header>
@@ -297,79 +327,75 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
   <!-- ============ EN-TETE ============ -->
   <section>
     <div class="hero">
-      <span class="badge"><i></i><span data-fr="Disponible pour un nouveau poste" data-en="Available for a new role">Disponible pour un nouveau poste</span></span>
+      <span class="badge"><i></i><span data-fr="Disponible pour un nouveau poste" data-en="Available for a new role" data-es="Disponible para un nuevo puesto">Disponible pour un nouveau poste</span></span>
       <div class="who">
         <span class="portrait">
-          <img src="assets/photo.png" alt="José Ladron de Guevara" width="90" height="90">
+          <img src="assets/photo.png" alt="José Ladrón de Guevara" width="180" height="180">
           <i></i>
         </span>
         <div>
-          <h1>José Ladron de Guevara</h1>
+          <h1>José Ladrón de Guevara</h1>
           <p class="role"
              data-fr="Ingénieur projet, automatisation et optimisation des process"
-             data-en="Project engineer, automation and process optimisation">Ingénieur projet, automatisation et optimisation des process</p>
+             data-en="Project engineer, automation and process optimisation"
+             data-es="Ingeniero de proyecto, automatización y optimización de procesos">Ingénieur projet, automatisation et optimisation des process</p>
         </div>
       </div>
       <div class="facts">
         <span class="fact">
           <b>Paris, France</b><s>·</s>
-          <span data-fr="Nationalité italienne et argentine" data-en="Italian and Argentine citizen">Nationalité italienne et argentine</span>
+          <span data-fr="Nationalité italienne et argentine" data-en="Italian and Argentine citizen" data-es="Nacionalidad italiana y argentina">Nationalité italienne et argentine</span>
         </span>
         <span class="fact">
-          <span data-fr="Espagnol natif · Français C2 · Anglais C1" data-en="Spanish native · French C2 · English C1">Espagnol natif · Français C2 · Anglais C1</span>
+          <span data-fr="Double diplôme École des Ponts ParisTech et Universidad Nacional de Córdoba"
+                data-en="Double degree, École des Ponts ParisTech and Universidad Nacional de Córdoba"
+                data-es="Doble diploma École des Ponts ParisTech y Universidad Nacional de Córdoba">Double diplôme École des Ponts ParisTech et Universidad Nacional de Córdoba</span>
         </span>
       </div>
-    </div>
-
-    <div class="edu">
-      <span class="eyebrow" data-fr="Formation" data-en="Education">Formation</span>
-      <span class="school">
-        <span class="crop crop-enpc"><img class="logo" src="logos/ENPC.png" alt="École nationale des ponts et chaussées"></span>
-        École des Ponts ParisTech
-      </span>
-      <span class="school">
-        <img class="logo logo-unc" src="logos/UNC.png" alt="Universidad Nacional de Córdoba">
-        Universidad Nacional de Córdoba
-      </span>
     </div>
 
     <div class="card">
       <p class="manifesto"><span
          data-fr="Je suis ingénieur civil. Je travaille sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main."
-         data-en="I am a civil engineer. I work on infrastructure projects where a huge share of the work still means comparing documents by hand.">Je suis ingénieur civil. Je travaille sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main.</span> <span class="hl"
+         data-en="I am a civil engineer. I work on infrastructure projects where a huge share of the work still means comparing documents by hand."
+         data-es="Soy ingeniero civil. Trabajo en proyectos de infraestructura donde una parte enorme del trabajo todavía consiste en comparar documentos a mano.">Je suis ingénieur civil. Je travaille sur des projets d'infrastructure où une part énorme du travail consiste encore à comparer des documents à la main.</span> <span class="hl"
          data-fr="J'écris les outils qui font ce travail à notre place."
-         data-en="I write the tools that do that work for us.">J'écris les outils qui font ce travail à notre place.</span></p>
+         data-en="I write the tools that do that work for us."
+         data-es="Escribo las herramientas que hacen ese trabajo por nosotros.">J'écris les outils qui font ce travail à notre place.</span></p>
 
       <div class="dimwrap">
+        <p class="dimlead" data-fr="Un exemple, mesuré" data-en="One example, measured" data-es="Un ejemplo, medido">Un exemple, mesuré</p>
         <svg class="dim" viewBox="0 0 700 152" role="img"
              aria-label="Temps de contrôle d'un plan d'exécution : 2 min 45 s avant, 25 s avec l'outil">
           <line class="ext" x1="16" y1="26" x2="16" y2="136"/>
-          <text class="lbl" x="16" y="20" data-fr="Contrôle manuel" data-en="Manual check">Contrôle manuel</text>
+          <text class="lbl" x="16" y="20" data-fr="Contrôle manuel" data-en="Manual check" data-es="Control manual">Contrôle manuel</text>
           <line class="bar-old draw d1" x1="16" y1="52" x2="545" y2="52" pathLength="1"/>
           <line class="tick tick-old" x1="545" y1="38" x2="545" y2="66"/>
           <text class="val val-old" x="558" y="60">2 min 45 s</text>
           <line class="bar-new draw d2" x1="16" y1="108" x2="96" y2="108" pathLength="1"/>
           <line class="tick" x1="96" y1="94" x2="96" y2="122"/>
           <text class="val val-new" x="109" y="116">25 s</text>
-          <text class="lbl" x="16" y="146" data-fr="Avec l'outil" data-en="With the tool">Avec l'outil</text>
+          <text class="lbl" x="16" y="146" data-fr="Avec l'outil" data-en="With the tool" data-es="Con la herramienta">Avec l'outil</text>
         </svg>
         <p class="dimcap"
            data-fr="Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil développé pendant mon stage de fin d'études. Le dessin est à l'échelle."
-           data-en="Time to check one execution drawing on Line 16 of the Grand Paris Express, before and after the tool I built during my final-year placement. The drawing is to scale.">Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil développé pendant mon stage de fin d'études. Le dessin est à l'échelle.</p>
+           data-en="Time to check one execution drawing on Line 16 of the Grand Paris Express, before and after the tool I built during my final-year placement. The drawing is to scale."
+           data-es="Tiempo de control de un plano de ejecución en la Línea 16 del Grand Paris Express, antes y después de la herramienta que desarrollé durante mi proyecto de fin de carrera. El dibujo está a escala.">Temps de contrôle d'un plan d'exécution sur la Ligne 16 du Grand Paris Express, avant et après l'outil développé pendant mon stage de fin d'études. Le dessin est à l'échelle.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ RECITS ============ -->
+  <!-- ============ EXPERIENCE ============ -->
   <section id="parcours">
     <div class="sechead">
       <div>
         <span class="num">01</span>
-        <h2 data-fr="Récits d'ingénierie" data-en="Engineering stories">Récits d'ingénierie</h2>
-        <p data-fr="Trois contextes, trois problèmes que quelqu'un résolvait encore à la main."
-           data-en="Three settings, three problems someone was still solving by hand.">Trois contextes, trois problèmes que quelqu'un résolvait encore à la main.</p>
+        <h2 data-fr="Expérience" data-en="Experience" data-es="Experiencia">Expérience</h2>
+        <p data-fr="Egis à Paris, Guy Nordenson and Associates à New York, Voyansi à Córdoba."
+           data-en="Egis in Paris, Guy Nordenson and Associates in New York, Voyansi in Córdoba."
+           data-es="Egis en París, Guy Nordenson and Associates en Nueva York, Voyansi en Córdoba.">Egis à Paris, Guy Nordenson and Associates à New York, Voyansi à Córdoba.</p>
       </div>
-      <span class="range" data-fr="2022 à aujourd'hui" data-en="2022 to today">2022 à aujourd'hui</span>
+      <span class="range" data-fr="2022 à aujourd'hui" data-en="2022 to today" data-es="2022 hasta hoy">2022 à aujourd'hui</span>
     </div>
 
     <!-- Egis -->
@@ -380,48 +406,62 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
           <span class="place">Paris</span>
           <p class="post"
              data-fr="Coordinateur BIM, Ligne 16 du Grand Paris Express"
-             data-en="BIM coordinator, Line 16 of the Grand Paris Express">Coordinateur BIM, Ligne 16 du Grand Paris Express</p>
+             data-en="BIM coordinator, Line 16 of the Grand Paris Express"
+             data-es="Coordinador BIM, Línea 16 del Grand Paris Express">Coordinateur BIM, Ligne 16 du Grand Paris Express</p>
         </div>
         <div class="when">
-          <b data-fr="Février à juillet 2026" data-en="February to July 2026">Février à juillet 2026</b>
-          <span data-fr="10 gares, 32 ouvrages annexes, 160 personnes" data-en="10 stations, 32 ancillary structures, 160 people">10 gares, 32 ouvrages annexes, 160 personnes</span>
+          <b data-fr="Février à juillet 2026" data-en="February to July 2026" data-es="Febrero a julio de 2026">Février à juillet 2026</b>
+          <span data-fr="10 gares, 32 ouvrages annexes, 160 personnes sur le projet"
+                data-en="10 stations, 32 ancillary structures, 160 people on the project"
+                data-es="10 estaciones, 32 obras anexas, 160 personas en el proyecto">10 gares, 32 ouvrages annexes, 160 personnes sur le projet</span>
         </div>
       </div>
 
       <h3 data-fr="Contrôler 1 300 plans sans les ouvrir un par un"
-          data-en="Checking 1,300 drawings without opening them one by one">Contrôler 1 300 plans sans les ouvrir un par un</h3>
+          data-en="Checking 1,300 drawings without opening them one by one"
+          data-es="Controlar 1300 planos sin abrirlos uno por uno">Contrôler 1 300 plans sans les ouvrir un par un</h3>
 
       <div class="body">
         <p data-fr="Sur un chantier de cette taille, chaque plan d'exécution existe à plusieurs endroits à la fois : dans la GED, dans la maquette native, dans le cartouche imprimé. Ces trois versions doivent dire la même chose. En pratique elles divergent, et quelqu'un doit s'en apercevoir avant que l'entreprise ne construise à partir du mauvais indice."
-           data-en="On a project this size, every execution drawing exists in several places at once: in the document platform, in the native model, in the printed title block. Those three versions have to agree. In practice they drift apart, and someone has to notice before a contractor builds from the wrong revision.">Sur un chantier de cette taille, chaque plan d'exécution existe à plusieurs endroits à la fois : dans la GED, dans la maquette native, dans le cartouche imprimé. Ces trois versions doivent dire la même chose. En pratique elles divergent, et quelqu'un doit s'en apercevoir avant que l'entreprise ne construise à partir du mauvais indice.</p>
+           data-en="On a project this size, every execution drawing exists in several places at once: in the document platform, in the native model, in the printed title block. Those three versions have to agree. In practice they drift apart, and someone has to notice before a contractor builds from the wrong revision."
+           data-es="En una obra de este tamaño, cada plano de ejecución existe en varios sitios a la vez: en la plataforma documental, en el modelo nativo, en el cajetín impreso. Esas tres versiones tienen que decir lo mismo. En la práctica divergen, y alguien tiene que darse cuenta antes de que la empresa construya a partir del índice equivocado.">Sur un chantier de cette taille, chaque plan d'exécution existe à plusieurs endroits à la fois : dans la GED, dans la maquette native, dans le cartouche imprimé. Ces trois versions doivent dire la même chose. En pratique elles divergent, et quelqu'un doit s'en apercevoir avant que l'entreprise ne construise à partir du mauvais indice.</p>
         <p data-fr="Ce contrôle se faisait à la main, plan par plan. J'ai écrit une chaîne qui interroge directement les plateformes, recompose les trois sources et signale les écarts. Sur 587 plans contrôlés, elle a fait ressortir huit familles de non-conformités que personne ne voyait, dont des décalages d'indice sur près d'un plan sur cinq."
-           data-en="That check was done by hand, drawing by drawing. I wrote a pipeline that queries the platforms directly, reassembles the three sources and flags the gaps. Across 587 drawings it surfaced eight categories of non-conformity nobody had seen, including revision mismatches on close to one drawing in five.">Ce contrôle se faisait à la main, plan par plan. J'ai écrit une chaîne qui interroge directement les plateformes, recompose les trois sources et signale les écarts. Sur 587 plans contrôlés, elle a fait ressortir huit familles de non-conformités que personne ne voyait, dont des décalages d'indice sur près d'un plan sur cinq.</p>
+           data-en="That check was done by hand, drawing by drawing. I wrote a pipeline that queries the platforms directly, reassembles the three sources and flags the gaps. Across 587 drawings it surfaced eight categories of non-conformity nobody had seen, including revision mismatches on close to one drawing in five."
+           data-es="Ese control se hacía a mano, plano por plano. Escribí una cadena que consulta directamente las plataformas, recompone las tres fuentes y señala las diferencias. Sobre 587 planos controlados, sacó a la luz ocho familias de no conformidades que nadie veía, entre ellas desfases de índice en cerca de uno de cada cinco planos.">Ce contrôle se faisait à la main, plan par plan. J'ai écrit une chaîne qui interroge directement les plateformes, recompose les trois sources et signale les écarts. Sur 587 plans contrôlés, elle a fait ressortir huit familles de non-conformités que personne ne voyait, dont des décalages d'indice sur près d'un plan sur cinq.</p>
       </div>
 
       <div class="qty">
-        <div class="reveal"><b>85 %</b><span data-fr="de temps en moins par plan contrôlé" data-en="less time per drawing checked">de temps en moins par plan contrôlé</span></div>
-        <div class="reveal"><b>35 h</b><span data-fr="gagnées par campagne de contrôle" data-en="saved per review campaign">gagnées par campagne de contrôle</span></div>
-        <div class="reveal"><b>587</b><span data-fr="plans passés au crible sur un corpus de 1 300" data-en="drawings screened out of a 1,300-drawing corpus">plans passés au crible sur un corpus de 1 300</span></div>
+        <div class="reveal"><b>85 %</b><span data-fr="de temps en moins par plan contrôlé" data-en="less time per drawing checked" data-es="menos tiempo por plano controlado">de temps en moins par plan contrôlé</span></div>
+        <div class="reveal"><b>35 h</b><span data-fr="gagnées par campagne de contrôle" data-en="saved per review campaign" data-es="ganadas por campaña de control">gagnées par campagne de contrôle</span></div>
+        <div class="reveal"><b>587</b><span data-fr="plans passés au crible sur un corpus de 1 300" data-en="drawings screened out of a 1,300-drawing corpus" data-es="planos analizados sobre un corpus de 1300">plans passés au crible sur un corpus de 1 300</span></div>
       </div>
 
       <div class="body">
         <p data-fr="Un outil qui ne tourne que sur mon poste ne sert à rien. Je l'ai empaqueté en exécutable Windows, sans installation ni ligne de commande, et nous l'avons présenté avec ma hiérarchie aux 160 collaborateurs de la ligne. Il est aujourd'hui utilisé sur tout le tronçon."
-           data-en="A tool that only runs on my machine is worthless. I packaged it as a Windows executable, no install and no command line, and we presented it with my managers to all 160 people on the line. It is now used across the whole section.">Un outil qui ne tourne que sur mon poste ne sert à rien. Je l'ai empaqueté en exécutable Windows, sans installation ni ligne de commande, et nous l'avons présenté avec ma hiérarchie aux 160 collaborateurs de la ligne. Il est aujourd'hui utilisé sur tout le tronçon.</p>
+           data-en="A tool that only runs on my machine is worthless. I packaged it as a Windows executable, no install and no command line, and we presented it with my managers to all 160 people on the line. It is now used across the whole section."
+           data-es="Una herramienta que solo funciona en mi ordenador no sirve de nada. La empaqueté como ejecutable de Windows, sin instalación ni línea de comandos, y la presentamos con mis responsables a los 160 colaboradores de la línea. Hoy se usa en todo el tramo.">Un outil qui ne tourne que sur mon poste ne sert à rien. Je l'ai empaqueté en exécutable Windows, sans installation ni ligne de commande, et nous l'avons présenté avec ma hiérarchie aux 160 collaborateurs de la ligne. Il est aujourd'hui utilisé sur tout le tronçon.</p>
         <p data-fr="Le même problème se posait sur les réservations, ces trous à percer dans le génie civil pour laisser passer les réseaux. Une gare en compte près d'un millier, réparties entre deux marchés différents, et une réservation mal affectée se paie en reprise sur site."
-           data-en="The same problem showed up with penetrations, the openings cast into the civil works so services can pass through. One station has close to a thousand of them, split across two separate contracts, and a wrongly allocated penetration gets paid for in site rework.">Le même problème se posait sur les réservations, ces trous à percer dans le génie civil pour laisser passer les réseaux. Une gare en compte près d'un millier, réparties entre deux marchés différents, et une réservation mal affectée se paie en reprise sur site.</p>
+           data-en="The same problem showed up with penetrations, the openings cast into the civil works so services can pass through. One station has close to a thousand of them, split across two separate contracts, and a wrongly allocated penetration gets paid for in site rework."
+           data-es="El mismo problema aparecía con las reservas, esos huecos que hay que dejar en la obra civil para que pasen las instalaciones. Una estación tiene cerca de mil, repartidas entre dos contratos distintos, y una reserva mal asignada se paga en repaso en obra.">Le même problème se posait sur les réservations, ces trous à percer dans le génie civil pour laisser passer les réseaux. Une gare en compte près d'un millier, réparties entre deux marchés différents, et une réservation mal affectée se paie en reprise sur site.</p>
       </div>
 
       <div class="qty">
-        <div class="reveal"><b>986</b><span data-fr="réservations d'une gare traitées en 30 secondes" data-en="penetrations in one station processed in 30 seconds">réservations d'une gare traitées en 30 secondes</span></div>
-        <div class="reveal"><b>73</b><span data-fr="divergences d'affectation entre marchés" data-en="allocation discrepancies between contracts">divergences d'affectation entre marchés</span></div>
-        <div class="reveal"><b>15</b><span data-fr="doublons de codification invisibles à l'œil" data-en="coding duplicates invisible to the eye">doublons de codification invisibles à l'œil</span></div>
+        <div class="reveal"><b>986</b><span data-fr="réservations d'une gare traitées en 30 secondes" data-en="penetrations in one station processed in 30 seconds" data-es="reservas de una estación tratadas en 30 segundos">réservations d'une gare traitées en 30 secondes</span></div>
+        <div class="reveal"><b>73</b><span data-fr="divergences d'affectation entre marchés" data-en="allocation discrepancies between contracts" data-es="divergencias de asignación entre contratos">divergences d'affectation entre marchés</span></div>
+        <div class="reveal"><b>15</b><span data-fr="doublons de codification invisibles à l'œil" data-en="coding duplicates invisible to the eye" data-es="duplicados de codificación invisibles a simple vista">doublons de codification invisibles à l'œil</span></div>
       </div>
 
       <ul class="chips">
-        <li class="head" data-fr="Outils" data-en="Tools">Outils</li>
+        <li class="head" data-fr="Outils" data-en="Tools" data-es="Herramientas">Outils</li>
         <li>Python</li><li>Dynamo</li><li>API tpPLM</li><li>API Catenda</li>
         <li>Autodesk Construction Cloud</li><li>IFC</li><li>Revit</li><li>Power BI</li>
       </ul>
+
+      <div class="ref">
+        <span class="lbl" data-fr="Référence" data-en="Reference" data-es="Referencia">Référence</span>
+        <a href="mailto:riyadh.mami@egis-group.com">Riyadh Mami</a>
+        <span class="who-role" data-fr="Data Manager du projet, mon responsable" data-en="Project Data Manager, my manager" data-es="Data Manager del proyecto, mi responsable">Data Manager du projet, mon responsable</span>
+      </div>
     </article>
 
     <!-- Guy Nordenson and Associates -->
@@ -429,67 +469,78 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
       <div class="caphead">
         <div class="ident">
           <img class="logo logo-gna" src="logos/gna.png" alt="Guy Nordenson and Associates">
-          <span class="place" data-fr="New York" data-en="New York">New York</span>
+          <span class="place" data-fr="New York" data-en="New York" data-es="Nueva York">New York</span>
           <p class="post"
              data-fr="Ingénieur structure, Emanuel Nine Memorial, Charleston"
-             data-en="Structural engineer, Emanuel Nine Memorial, Charleston">Ingénieur structure, Emanuel Nine Memorial, Charleston</p>
+             data-en="Structural engineer, Emanuel Nine Memorial, Charleston"
+             data-es="Ingeniero de estructuras, Emanuel Nine Memorial, Charleston">Ingénieur structure, Emanuel Nine Memorial, Charleston</p>
         </div>
         <div class="when">
-          <b data-fr="2024 à 2025" data-en="2024 to 2025">2024 à 2025</b>
-          <span data-fr="Agence de sept personnes, périmètre complet" data-en="Seven-person firm, full scope">Agence de sept personnes, périmètre complet</span>
+          <b data-fr="2024 à 2025" data-en="2024 to 2025" data-es="2024 a 2025">2024 à 2025</b>
+          <span data-fr="Agence de 7 personnes, périmètre complet" data-en="7-person firm, full scope" data-es="Estudio de 7 personas, alcance completo">Agence de 7 personnes, périmètre complet</span>
         </div>
       </div>
 
       <h3 data-fr="Sauver du marbre déjà déclaré inutilisable"
-          data-en="Saving marble already written off">Sauver du marbre déjà déclaré inutilisable</h3>
+          data-en="Saving marble already written off"
+          data-es="Salvar mármol ya declarado inservible">Sauver du marbre déjà déclaré inutilisable</h3>
 
       <div class="body">
-        <p data-fr="Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des pièces devenait, sur le papier, inutilisable."
-           data-en="The memorial honours the nine people killed in the 2015 attack on Mother Emanuel AME Church. Two long, custom-cut marble benches are its heart. Mid-design, testing revealed internal defects in the stone: allowable tensile stress dropped from 200 to 54 psi. On paper, a large share of the pieces became unusable.">Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des pièces devenait, sur le papier, inutilisable.</p>
+        <p data-fr="Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des trente-six pièces devenait, sur le papier, inutilisable."
+           data-en="The memorial honours the nine people killed in the 2015 attack on Mother Emanuel AME Church. Two long, custom-cut marble benches are its heart. Mid-design, testing revealed internal defects in the stone: allowable tensile stress dropped from 200 to 54 psi. On paper, a large share of the thirty-six pieces became unusable."
+           data-es="El memorial honra a las nueve víctimas del ataque de 2015 en la Mother Emanuel AME Church. Dos bancos largos de mármol tallados a medida son su corazón. Durante el estudio, los ensayos revelaron defectos internos en la piedra: la tracción admisible caía de 200 a 54 psi. Sobre el papel, buena parte de las treinta y seis piezas quedaba inservible.">Le mémorial rend hommage aux neuf victimes de l'attaque de 2015 à la Mother Emanuel AME Church. Deux longs bancs en marbre taillés sur mesure en forment le cœur. En cours d'étude, les essais ont révélé des défauts internes dans la pierre : la contrainte de traction admissible tombait de 200 à 54 psi. Une grande partie des trente-six pièces devenait, sur le papier, inutilisable.</p>
         <p data-fr="Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai donc repris l'analyse depuis le début."
-           data-en="Each piece takes around five months to produce. Replacing them all meant delaying the project by the same amount. So I rebuilt the analysis from scratch.">Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai donc repris l'analyse depuis le début.</p>
-        <p data-fr="Le modèle a montré que la plupart des pièces tenaient, à condition d'introduire les bonnes discontinuités. Elles sont restées dans l'ouvrage."
-           data-en="The model showed that most pieces held, provided the right discontinuities were introduced. They stayed in the built work.">Le modèle a montré que la plupart des pièces tenaient, à condition d'introduire les bonnes discontinuités. Elles sont restées dans l'ouvrage.</p>
-        <p data-fr="L'agence comptait sept personnes. J'y ai fait les calculs, les notes, les planches et les présentations, et j'ai suivi les échanges avec l'architecte, le laboratoire d'essais et le client. En parallèle : revue des documents d'exécution de l'ambassade des États-Unis à Paris, avant-projet d'un théâtre en Floride, et supports de sculptures monumentales pour le Guggenheim."
-           data-en="The firm had seven people. I ran the calculations, the reports, the drawings and the presentations, and followed the exchanges with the architect, the testing lab and the client. Alongside: construction document review for the US Embassy in Paris, preliminary design of a theatre in Florida, and supports for large-scale sculptures for the Guggenheim.">L'agence comptait sept personnes. J'y ai fait les calculs, les notes, les planches et les présentations, et j'ai suivi les échanges avec l'architecte, le laboratoire d'essais et le client. En parallèle : revue des documents d'exécution de l'ambassade des États-Unis à Paris, avant-projet d'un théâtre en Floride, et supports de sculptures monumentales pour le Guggenheim.</p>
+           data-en="Each piece takes around five months to produce. Replacing them all meant delaying the project by the same amount. So I rebuilt the analysis from scratch."
+           data-es="Cada pieza requiere unos cinco meses de producción. Reemplazarlas todas suponía retrasar el proyecto otro tanto. Así que rehice el análisis desde cero.">Chaque pièce demande environ cinq mois de production. Les remplacer toutes revenait à décaler le projet d'autant. J'ai donc repris l'analyse depuis le début.</p>
+        <p data-fr="Modèle volumique complet sous ANSYS Mechanical, maillage tétraédrique, avec trois types de contacts entre blocs de marbre selon qu'ils devaient glisser, se séparer ou rester solidaires. Les joints de dilatation en polyuréthane ont été modélisés comme des disques hyperélastiques, avec une loi de Mooney-Rivlin à trois paramètres calibrée sur les essais de compression uniaxiale du laboratoire. Le chargement thermique s'est révélé plus critique que le séisme."
+           data-en="A full solid model in ANSYS Mechanical, tetrahedral mesh, with three contact types between marble blocks depending on whether they had to slide, separate or stay bonded. The polyurethane expansion joints were modelled as hyperelastic discs, using a three-parameter Mooney-Rivlin law calibrated against the lab's uniaxial compression tests. Thermal loading turned out to be more critical than seismic."
+           data-es="Modelo volumétrico completo en ANSYS Mechanical, malla tetraédrica, con tres tipos de contacto entre bloques de mármol según tuvieran que deslizar, separarse o permanecer solidarios. Las juntas de dilatación de poliuretano se modelaron como discos hiperelásticos, con una ley de Mooney-Rivlin de tres parámetros calibrada sobre los ensayos de compresión uniaxial del laboratorio. La carga térmica resultó más crítica que el sismo.">Modèle volumique complet sous ANSYS Mechanical, maillage tétraédrique, avec trois types de contacts entre blocs de marbre selon qu'ils devaient glisser, se séparer ou rester solidaires. Les joints de dilatation en polyuréthane ont été modélisés comme des disques hyperélastiques, avec une loi de Mooney-Rivlin à trois paramètres calibrée sur les essais de compression uniaxiale du laboratoire. Le chargement thermique s'est révélé plus critique que le séisme.</p>
+        <p data-fr="Le modèle a montré que la plupart des pièces tenaient, à condition d'introduire les bonnes discontinuités. Vingt-huit des trente-six pièces sont restées dans l'ouvrage."
+           data-en="The model showed that most pieces held, provided the right discontinuities were introduced. Twenty-eight of the thirty-six pieces stayed in the built work."
+           data-es="El modelo demostró que la mayoría de las piezas aguantaban, siempre que se introdujeran las discontinuidades correctas. Veintiocho de las treinta y seis piezas se quedaron en la obra.">Le modèle a montré que la plupart des pièces tenaient, à condition d'introduire les bonnes discontinuités. Vingt-huit des trente-six pièces sont restées dans l'ouvrage.</p>
+        <p data-fr="L'agence comptait 7 personnes. J'y ai fait les calculs, les notes, les planches et les présentations, et j'ai suivi les échanges avec l'architecte, le laboratoire d'essais et le client. En parallèle : revue des documents d'exécution de l'ambassade des États-Unis à Paris, avant-projet d'un théâtre en Floride, et supports de sculptures monumentales pour le Guggenheim."
+           data-en="The firm had 7 people. I ran the calculations, the reports, the drawings and the presentations, and followed the exchanges with the architect, the testing lab and the client. Alongside: construction document review for the US Embassy in Paris, preliminary design of a theatre in Florida, and supports for large-scale sculptures for the Guggenheim."
+           data-es="El estudio tenía 7 personas. Allí hice los cálculos, las memorias, los planos y las presentaciones, y seguí los intercambios con el arquitecto, el laboratorio de ensayos y el cliente. En paralelo: revisión de los documentos de ejecución de la embajada de Estados Unidos en París, anteproyecto de un teatro en Florida, y soportes de esculturas monumentales para el Guggenheim.">L'agence comptait 7 personnes. J'y ai fait les calculs, les notes, les planches et les présentations, et j'ai suivi les échanges avec l'architecte, le laboratoire d'essais et le client. En parallèle : revue des documents d'exécution de l'ambassade des États-Unis à Paris, avant-projet d'un théâtre en Floride, et supports de sculptures monumentales pour le Guggenheim.</p>
       </div>
 
       <div class="qty">
-        <div class="reveal"><b>200 → 54</b><span data-fr="psi de traction admissible après essais" data-en="psi allowable tensile stress after testing">psi de traction admissible après essais</span></div>
-        <div class="reveal"><b data-fr="5 mois" data-en="5 months">5 mois</b><span data-fr="de production évités par pièce conservée" data-en="of production avoided per piece kept">de production évités par pièce conservée</span></div>
-        <div class="reveal"><b>7</b><span data-fr="personnes dans l'agence, périmètre complet" data-en="people in the firm, full scope">personnes dans l'agence, périmètre complet</span></div>
+        <div class="reveal"><b>28 / 36</b><span data-fr="pièces de marbre conservées dans les bancs" data-en="marble pieces kept in the benches" data-es="piezas de mármol conservadas en los bancos">pièces de marbre conservées dans les bancs</span></div>
+        <div class="reveal"><b data-fr="5 mois" data-en="5 months" data-es="5 meses">5 mois</b><span data-fr="de production évités par pièce conservée" data-en="of production avoided per piece kept" data-es="de producción evitados por pieza conservada">de production évités par pièce conservée</span></div>
+        <div class="reveal"><b>7</b><span data-fr="personnes dans l'agence, périmètre complet" data-en="people in the firm, full scope" data-es="personas en el estudio, alcance completo">personnes dans l'agence, périmètre complet</span></div>
       </div>
 
-      <details>
-        <summary data-fr="Le détail technique" data-en="The technical detail">Le détail technique</summary>
-        <div class="body">
-          <p data-fr="Modèle volumique complet sous ANSYS Mechanical, maillage tétraédrique, avec trois types de contacts entre blocs de marbre selon qu'ils devaient glisser, se séparer ou rester solidaires. Les joints de dilatation en polyuréthane ont été modélisés comme des disques hyperélastiques, avec une loi de Mooney-Rivlin à trois paramètres calibrée sur les essais de compression uniaxiale du laboratoire."
-             data-en="A full solid model in ANSYS Mechanical, tetrahedral mesh, with three contact types between marble blocks depending on whether they had to slide, separate or stay bonded. The polyurethane expansion joints were modelled as hyperelastic discs, using a three-parameter Mooney-Rivlin law calibrated against the lab's uniaxial compression tests.">Modèle volumique complet sous ANSYS Mechanical, maillage tétraédrique, avec trois types de contacts entre blocs de marbre selon qu'ils devaient glisser, se séparer ou rester solidaires. Les joints de dilatation en polyuréthane ont été modélisés comme des disques hyperélastiques, avec une loi de Mooney-Rivlin à trois paramètres calibrée sur les essais de compression uniaxiale du laboratoire.</p>
-          <p data-fr="Le chargement thermique s'est révélé plus critique que le séisme. Les zones de marbre jugées non structurelles ont été retirées du modèle plutôt que dégradées, et les réparations locales ont été modélisées explicitement avec leurs goujons."
-             data-en="Thermal loading turned out to be more critical than seismic. Marble zones judged non-structural were removed from the model rather than degraded, and the local repairs were modelled explicitly with their dowels.">Le chargement thermique s'est révélé plus critique que le séisme. Les zones de marbre jugées non structurelles ont été retirées du modèle plutôt que dégradées, et les réparations locales ont été modélisées explicitement avec leurs goujons.</p>
-        </div>
-      </details>
-
       <ul class="chips">
-        <li class="head" data-fr="Outils" data-en="Tools">Outils</li>
+        <li class="head" data-fr="Outils" data-en="Tools" data-es="Herramientas">Outils</li>
         <li>ANSYS Mechanical</li><li>SAP2000</li><li>ETABS</li><li>Rhino</li><li>Grasshopper</li>
       </ul>
+
+      <div class="ref">
+        <span class="lbl" data-fr="Référence" data-en="Reference" data-es="Referencia">Référence</span>
+        <a href="mailto:as@nordenson.com">Alexandra Steelman</a>
+        <span class="who-role" data-fr="Associate de l'agence, ma responsable" data-en="Associate at the firm, my manager" data-es="Associate del estudio, mi responsable">Associate de l'agence, ma responsable</span>
+      </div>
     </article>
 
     <!-- Publication -->
     <aside class="interlude">
-      <span class="eyebrow" data-fr="Publication" data-en="Publication">Publication</span>
+      <span class="eyebrow" data-fr="Publication" data-en="Publication" data-es="Publicación">Publication</span>
       <h3>If Buildings Could Fly</h3>
       <p class="post"
          data-fr="Coécrit avec Guy Nordenson et Alexandra Steelman : déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi"
-         data-en="Co-authored with Guy Nordenson and Alexandra Steelman: lateral-torsional buckling of steel girders, built around Pier Luigi Nervi's Palazzo del Lavoro">Coécrit avec Guy Nordenson et Alexandra Steelman : déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi</p>
+         data-en="Co-authored with Guy Nordenson and Alexandra Steelman: lateral-torsional buckling of steel girders, built around Pier Luigi Nervi's Palazzo del Lavoro"
+         data-es="Coescrito con Guy Nordenson y Alexandra Steelman: pandeo lateral-torsional de vigas metálicas, a partir del Palazzo del Lavoro de Pier Luigi Nervi">Coécrit avec Guy Nordenson et Alexandra Steelman : déversement des poutres métalliques, à partir du Palazzo del Lavoro de Pier Luigi Nervi</p>
       <blockquote
          data-fr="Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue."
-         data-en="Writing a technical text alongside Guy Nordenson taught me something school had not: a sentence has to be as precise as a calculation, because the sentence is what gets read.">Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue.</blockquote>
+         data-en="Writing a technical text alongside Guy Nordenson taught me something school had not: a sentence has to be as precise as a calculation, because the sentence is what gets read."
+         data-es="Escribir un texto técnico al lado de Guy Nordenson me enseñó algo que la escuela no me había mostrado: una frase tiene que ser tan precisa como un cálculo, porque la frase es lo que se lee.">Écrire un texte technique à côté de Guy Nordenson m'a appris quelque chose que je n'avais pas vu en école : une phrase doit être aussi précise qu'un calcul, parce que c'est la phrase qui sera lue.</blockquote>
       <div class="body">
         <p data-fr="Mais l'article n'a été qu'une partie de ce que j'ai appris de lui. Pendant toute l'année, sur chacun des projets, Guy prenait le temps d'expliquer d'où venait une hypothèse, pourquoi une solution tenait et pourquoi une autre, plus élégante en apparence, ne tenait pas. Travailler à ses côtés au quotidien a été la meilleure formation que j'aie reçue, et il restera l'un des professeurs qui m'ont le plus marqué."
-           data-en="But the paper was only part of what I learned from him. All year, on every project, Guy took the time to explain where an assumption came from, why one solution held and why another, more elegant on the surface, did not. Working next to him day after day was the best training I have had, and he remains one of the teachers who marked me most.">Mais l'article n'a été qu'une partie de ce que j'ai appris de lui. Pendant toute l'année, sur chacun des projets, Guy prenait le temps d'expliquer d'où venait une hypothèse, pourquoi une solution tenait et pourquoi une autre, plus élégante en apparence, ne tenait pas. Travailler à ses côtés au quotidien a été la meilleure formation que j'aie reçue, et il restera l'un des professeurs qui m'ont le plus marqué.</p>
+           data-en="But the paper was only part of what I learned from him. All year, on every project, Guy took the time to explain where an assumption came from, why one solution held and why another, more elegant on the surface, did not. Working next to him day after day was the best training I have had, and he remains one of the teachers who marked me most."
+           data-es="Pero el artículo fue solo una parte de lo que aprendí de él. Durante todo el año, en cada proyecto, Guy se tomaba el tiempo de explicar de dónde venía una hipótesis, por qué una solución aguantaba y por qué otra, más elegante en apariencia, no. Trabajar a su lado a diario ha sido la mejor formación que he recibido, y seguirá siendo uno de los profesores que más me han marcado.">Mais l'article n'a été qu'une partie de ce que j'ai appris de lui. Pendant toute l'année, sur chacun des projets, Guy prenait le temps d'expliquer d'où venait une hypothèse, pourquoi une solution tenait et pourquoi une autre, plus élégante en apparence, ne tenait pas. Travailler à ses côtés au quotidien a été la meilleure formation que j'aie reçue, et il restera l'un des professeurs qui m'ont le plus marqué.</p>
       </div>
+      <a class="btn-dark" href="https://www.ingentaconnect.com/content/iass/piass/2025/00002025/00000004/art00010"
+         target="_blank" rel="noopener"
+         data-fr="Lire l'article" data-en="Read the paper" data-es="Leer el artículo">Lire l'article</a>
     </aside>
 
     <!-- Voyansi -->
@@ -497,71 +548,141 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
       <div class="caphead">
         <div class="ident">
           <img class="logo logo-voyansi" src="logos/voyansi.png" alt="Voyansi">
-          <span class="place" data-fr="Córdoba" data-en="Córdoba">Córdoba</span>
-          <p class="post" data-fr="Projeteur BIM, Argentine" data-en="BIM modeller, Argentina">Projeteur BIM, Argentine</p>
+          <span class="place" data-fr="Córdoba" data-en="Córdoba" data-es="Córdoba">Córdoba</span>
+          <p class="post" data-fr="Projeteur BIM, Argentine" data-en="BIM modeller, Argentina" data-es="Proyectista BIM, Argentina">Projeteur BIM, Argentine</p>
         </div>
         <div class="when">
           <b>2022</b>
-          <span data-fr="Mon premier vrai poste, à dix-neuf ans" data-en="My first real job, at nineteen">Mon premier vrai poste, à dix-neuf ans</span>
+          <span data-fr="Mon premier vrai poste" data-en="My first real job" data-es="Mi primer trabajo de verdad">Mon premier vrai poste</span>
         </div>
       </div>
 
-      <h3 data-fr="Là où l'envie a commencé" data-en="Where the appetite started">Là où l'envie a commencé</h3>
+      <h3 data-fr="Là où l'envie a commencé" data-en="Where the appetite started" data-es="Donde empezaron las ganas">Là où l'envie a commencé</h3>
 
       <div class="body">
         <p data-fr="J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite."
-           data-en="I was nineteen and seeing from the inside how a company actually runs: deadlines, reviews, the fact that a deliverable belongs to a team and not to a person. Seeing that early changes how you work afterwards.">J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite.</p>
+           data-en="I was nineteen and seeing from the inside how a company actually runs: deadlines, reviews, the fact that a deliverable belongs to a team and not to a person. Seeing that early changes how you work afterwards."
+           data-es="Tenía diecinueve años y descubría desde dentro cómo funciona una empresa: los plazos, las revisiones, el hecho de que un entregable pertenece a un equipo y no a una persona. Ver eso pronto cambia la forma de trabajar después.">J'avais dix-neuf ans et je découvrais de l'intérieur comment fonctionne une entreprise : les délais, les revues, le fait qu'un livrable appartient à une équipe et pas à une personne. Voir cela tôt change la façon dont on travaille ensuite.</p>
         <p data-fr="Mon travail consistait à produire des plans d'exécution de gradins de salles de cinéma à partir de maquettes 3D et de plans anciens. C'est là que je suis entré pour de bon dans les logiciels du métier. Et c'est là aussi que j'ai commencé à voir leurs limites : le temps que l'on passe à contourner un outil au lieu de concevoir avec lui."
-           data-en="My job was producing construction drawings for cinema seating tiers from 3D models and old drawings. That is where I properly got inside the software of the trade. And it is also where I started to see its limits: the time you spend working around a tool instead of designing with it.">Mon travail consistait à produire des plans d'exécution de gradins de salles de cinéma à partir de maquettes 3D et de plans anciens. C'est là que je suis entré pour de bon dans les logiciels du métier. Et c'est là aussi que j'ai commencé à voir leurs limites : le temps que l'on passe à contourner un outil au lieu de concevoir avec lui.</p>
+           data-en="My job was producing construction drawings for cinema seating tiers from 3D models and old drawings. That is where I properly got inside the software of the trade. And it is also where I started to see its limits: the time you spend working around a tool instead of designing with it."
+           data-es="Mi trabajo consistía en producir planos de ejecución de gradas de salas de cine a partir de modelos 3D y planos antiguos. Ahí entré de lleno en los programas del oficio. Y ahí también empecé a ver sus límites: el tiempo que uno pasa rodeando una herramienta en vez de diseñar con ella.">Mon travail consistait à produire des plans d'exécution de gradins de salles de cinéma à partir de maquettes 3D et de plans anciens. C'est là que je suis entré pour de bon dans les logiciels du métier. Et c'est là aussi que j'ai commencé à voir leurs limites : le temps que l'on passe à contourner un outil au lieu de concevoir avec lui.</p>
         <p data-fr="L'envie qui guide ma recherche aujourd'hui vient de là. Les logiciels de génie civil décident d'une bonne partie de nos journées. J'aimerais apporter ma pierre à les rendre plus efficaces."
-           data-en="The appetite that guides my search today comes from there. Civil engineering software decides a large part of our working days. I would like to do my part in making it better.">L'envie qui guide ma recherche aujourd'hui vient de là. Les logiciels de génie civil décident d'une bonne partie de nos journées. J'aimerais apporter ma pierre à les rendre plus efficaces.</p>
+           data-en="The appetite that guides my search today comes from there. Civil engineering software decides a large part of our working days. I would like to do my part in making it better."
+           data-es="Las ganas que guían mi búsqueda hoy vienen de ahí. Los programas de ingeniería civil deciden buena parte de nuestros días. Me gustaría aportar mi grano de arena para hacerlos más eficaces.">L'envie qui guide ma recherche aujourd'hui vient de là. Les logiciels de génie civil décident d'une bonne partie de nos journées. J'aimerais apporter ma pierre à les rendre plus efficaces.</p>
+      </div>
+
+      <div class="ref">
+        <span class="lbl" data-fr="Référence" data-en="Reference" data-es="Referencia">Référence</span>
+        <a href="mailto:cpizarro@voyansi.com">Cecilia Isabel Pizarro</a>
+        <span class="who-role" data-fr="Project Manager, ma responsable" data-en="Project Manager, my manager" data-es="Project Manager, mi responsable">Project Manager, ma responsable</span>
       </div>
     </article>
+  </section>
+
+  <!-- ============ FORMATION ============ -->
+  <section id="formation">
+    <div class="sechead">
+      <div>
+        <span class="num">02</span>
+        <h2 data-fr="Une formation sur deux continents" data-en="An education across two continents" data-es="Una formación en dos continentes">Une formation sur deux continents</h2>
+        <p data-fr="Six ans d'études, deux universités, deux systèmes d'enseignement, deux langues de travail."
+           data-en="Six years of study, two universities, two teaching systems, two working languages."
+           data-es="Seis años de estudios, dos universidades, dos sistemas de enseñanza, dos lenguas de trabajo.">Six ans d'études, deux universités, deux systèmes d'enseignement, deux langues de travail.</p>
+      </div>
+      <span class="range" data-fr="2020 à 2026" data-en="2020 to 2026" data-es="2020 a 2026">2020 à 2026</span>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <p data-fr="J'ai commencé le génie civil en 2020 à l'Universidad Nacional de Córdoba, en Argentine. En 2023 je suis entré à l'École des Ponts ParisTech dans le cadre d'un double diplôme, et j'ai mené les deux cursus jusqu'au bout : ils se terminent tous les deux en 2026."
+           data-en="I started civil engineering in 2020 at the Universidad Nacional de Córdoba, in Argentina. In 2023 I joined École des Ponts ParisTech under a double-degree agreement, and I carried both programmes through to the end: they both finish in 2026."
+           data-es="Empecé ingeniería civil en 2020 en la Universidad Nacional de Córdoba, en Argentina. En 2023 entré en la École des Ponts ParisTech dentro de un doble diploma, y llevé los dos planes de estudios hasta el final: ambos terminan en 2026.">J'ai commencé le génie civil en 2020 à l'Universidad Nacional de Córdoba, en Argentine. En 2023 je suis entré à l'École des Ponts ParisTech dans le cadre d'un double diplôme, et j'ai mené les deux cursus jusqu'au bout : ils se terminent tous les deux en 2026.</p>
+        <p data-fr="Deux fois le même métier, appris de deux façons différentes, à dix mille kilomètres d'écart. L'Argentine m'a donné le calcul et le chantier ; les Ponts m'ont donné la méthode française et l'accès à l'ingénierie européenne. Il a fallu valider les deux programmes en parallèle, dans deux langues, avec deux calendriers qui ne s'alignent pas."
+           data-en="The same profession learned twice, in two different ways, ten thousand kilometres apart. Argentina gave me the calculation and the site; the Ponts gave me the French method and access to European engineering. Both programmes had to be completed in parallel, in two languages, on two calendars that do not line up."
+           data-es="Dos veces el mismo oficio, aprendido de dos maneras distintas, a diez mil kilómetros de distancia. Argentina me dio el cálculo y la obra; los Ponts me dieron el método francés y el acceso a la ingeniería europea. Hubo que validar los dos programas en paralelo, en dos idiomas, con dos calendarios que no se alinean.">Deux fois le même métier, appris de deux façons différentes, à dix mille kilomètres d'écart. L'Argentine m'a donné le calcul et le chantier ; les Ponts m'ont donné la méthode française et l'accès à l'ingénierie européenne. Il a fallu valider les deux programmes en parallèle, dans deux langues, avec deux calendriers qui ne s'alignent pas.</p>
+      </div>
+
+      <div class="edulist">
+        <div class="eduitem">
+          <div class="top">
+            <span class="crop crop-enpc"><img class="logo" src="logos/ENPC.png" alt="École nationale des ponts et chaussées"></span>
+            <h3>École des Ponts ParisTech</h3>
+          </div>
+          <span class="deg" data-fr="Diplôme d'ingénieur, Génie Civil et Construction" data-en="Engineering degree, Civil Engineering and Construction" data-es="Título de ingeniero, Ingeniería Civil y Construcción">Diplôme d'ingénieur, Génie Civil et Construction</span>
+          <span class="deg" data-fr="Boursier de la Fondation des Ponts" data-en="Fondation des Ponts scholarship holder" data-es="Becario de la Fondation des Ponts">Boursier de la Fondation des Ponts</span>
+          <span class="yrs" data-fr="Paris · 2023 à 2026" data-en="Paris · 2023 to 2026" data-es="París · 2023 a 2026">Paris · 2023 à 2026</span>
+        </div>
+        <div class="eduitem">
+          <div class="top">
+            <img class="logo logo-unc" src="logos/UNC.png" alt="Universidad Nacional de Córdoba">
+            <h3>Universidad Nacional de Córdoba</h3>
+          </div>
+          <span class="deg" data-fr="Ingeniería Civil, cursus complet" data-en="Ingeniería Civil, full programme" data-es="Ingeniería Civil, plan completo">Ingeniería Civil, cursus complet</span>
+          <span class="deg" data-fr="Moyenne de 8,83 sur 10" data-en="Grade average of 8.83 out of 10" data-es="Promedio de 8,83 sobre 10">Moyenne de 8,83 sur 10</span>
+          <span class="yrs" data-fr="Córdoba, Argentine · 2020 à 2026" data-en="Córdoba, Argentina · 2020 to 2026" data-es="Córdoba, Argentina · 2020 a 2026">Córdoba, Argentine · 2020 à 2026</span>
+        </div>
+      </div>
+
+      <div class="rank">
+        <b data-fr="4e sur 220" data-en="4th of 220" data-es="4.º de 220">4e sur 220</b>
+        <span class="txt"
+              data-fr="Classement établi par la faculté sur la promotion 2020 de génie civil, pour une moyenne de 8,83 sur 10 contre 6,85 de moyenne historique de la filière."
+              data-en="Ranking issued by the faculty for the 2020 civil engineering cohort, on a grade average of 8.83 out of 10 against a historical course average of 6.85."
+              data-es="Clasificación emitida por la facultad sobre la cohorte 2020 de ingeniería civil, con un promedio de 8,83 sobre 10 frente al 6,85 histórico de la carrera.">Classement établi par la faculté sur la promotion 2020 de génie civil, pour une moyenne de 8,83 sur 10 contre 6,85 de moyenne historique de la filière.</span>
+        <a class="certlink" href="certificats/classement-unc.pdf" target="_blank" rel="noopener"
+           data-fr="Voir l'attestation" data-en="See the certificate" data-es="Ver el certificado">Voir l'attestation</a>
+      </div>
+    </div>
   </section>
 
   <!-- ============ COMPETENCES ============ -->
   <section id="competences">
     <div class="sechead">
       <div>
-        <span class="num">02</span>
-        <h2 data-fr="Ce que je sais faire" data-en="What I can do">Ce que je sais faire</h2>
+        <span class="num">03</span>
+        <h2 data-fr="Ce que je sais faire" data-en="What I can do" data-es="Lo que sé hacer">Ce que je sais faire</h2>
         <p data-fr="Les outils du métier, et ceux que j'écris quand le métier n'en a pas."
-           data-en="The tools of the trade, and the ones I write when the trade has none.">Les outils du métier, et ceux que j'écris quand le métier n'en a pas.</p>
+           data-en="The tools of the trade, and the ones I write when the trade has none."
+           data-es="Las herramientas del oficio, y las que escribo cuando el oficio no las tiene.">Les outils du métier, et ceux que j'écris quand le métier n'en a pas.</p>
       </div>
     </div>
 
     <div class="grid2">
       <div class="card skill">
-        <h3 data-fr="Automatisation et données" data-en="Automation and data">Automatisation et données</h3>
+        <h3 data-fr="Automatisation et données" data-en="Automation and data" data-es="Automatización y datos">Automatisation et données</h3>
         <p data-fr="Des chaînes qui interrogent les plateformes, recomposent les données et signalent les écarts. Empaquetées pour que n'importe qui les lance."
-           data-en="Pipelines that query the platforms, reassemble the data and flag the gaps. Packaged so anyone can run them.">Des chaînes qui interrogent les plateformes, recomposent les données et signalent les écarts. Empaquetées pour que n'importe qui les lance.</p>
+           data-en="Pipelines that query the platforms, reassemble the data and flag the gaps. Packaged so anyone can run them."
+           data-es="Cadenas que consultan las plataformas, recomponen los datos y señalan las diferencias. Empaquetadas para que cualquiera las ejecute.">Des chaînes qui interrogent les plateformes, recomposent les données et signalent les écarts. Empaquetées pour que n'importe qui les lance.</p>
         <ul class="chips">
           <li>Python</li><li>Dynamo</li><li>APIs REST</li><li>IFC</li><li>Power BI</li>
         </ul>
       </div>
 
       <div class="card skill">
-        <h3 data-fr="BIM et coordination" data-en="BIM and coordination">BIM et coordination</h3>
+        <h3 data-fr="BIM et coordination" data-en="BIM and coordination" data-es="BIM y coordinación">BIM et coordination</h3>
         <p data-fr="Contrôle qualité documentaire, gestion des réservations, coordination entre marchés sur des maquettes à forte densité."
-           data-en="Document quality control, penetration management, coordination across contracts on high-density models.">Contrôle qualité documentaire, gestion des réservations, coordination entre marchés sur des maquettes à forte densité.</p>
+           data-en="Document quality control, penetration management, coordination between contracts on high-density models."
+           data-es="Control de calidad documental, gestión de reservas, coordinación entre contratos sobre modelos de alta densidad.">Contrôle qualité documentaire, gestion des réservations, coordination entre marchés sur des maquettes à forte densité.</p>
         <ul class="chips">
-          <li>Revit</li><li>Autodesk Construction Cloud</li><li>Catenda</li><li>Solibri</li>
+          <li>Revit</li><li>Navisworks</li><li>Catenda</li><li>Autodesk Construction Cloud</li><li>tpPLM</li>
         </ul>
       </div>
 
       <div class="card skill">
-        <h3 data-fr="Calcul et conception" data-en="Analysis and design">Calcul et conception</h3>
+        <h3 data-fr="Calcul et conception" data-en="Analysis and design" data-es="Cálculo y diseño">Calcul et conception</h3>
         <p data-fr="Éléments finis non linéaires, béton et acier, du dimensionnement jusqu'à la note de calcul et la planche."
-           data-en="Non-linear finite elements, concrete and steel, from sizing through to the calculation report and the drawing.">Éléments finis non linéaires, béton et acier, du dimensionnement jusqu'à la note de calcul et la planche.</p>
+           data-en="Non-linear finite elements, concrete and steel, from sizing through to the calculation report and the drawing."
+           data-es="Elementos finitos no lineales, hormigón y acero, del dimensionado hasta la memoria de cálculo y el plano.">Éléments finis non linéaires, béton et acier, du dimensionnement jusqu'à la note de calcul et la planche.</p>
         <ul class="chips">
           <li>ANSYS</li><li>SAP2000</li><li>ETABS</li><li>Rhino</li><li>Grasshopper</li><li>AutoCAD</li>
         </ul>
       </div>
 
       <div class="card skill">
-        <h3 data-fr="Gestion de projet" data-en="Project management">Gestion de projet</h3>
+        <h3 data-fr="Gestion de projet" data-en="Project management" data-es="Gestión de proyecto">Gestion de projet</h3>
         <p data-fr="Suivi de planning et de livrables, revues, échanges avec l'architecte, le laboratoire d'essais et le client."
-           data-en="Schedule and deliverable tracking, reviews, exchanges with the architect, the testing lab and the client.">Suivi de planning et de livrables, revues, échanges avec l'architecte, le laboratoire d'essais et le client.</p>
+           data-en="Schedule and deliverable tracking, reviews, exchanges with the architect, the testing lab and the client."
+           data-es="Seguimiento de planificación y entregables, revisiones, intercambios con el arquitecto, el laboratorio de ensayos y el cliente.">Suivi de planning et de livrables, revues, échanges avec l'architecte, le laboratoire d'essais et le client.</p>
         <ul class="chips">
           <li>MS Project</li><li>Bluebeam</li>
         </ul>
@@ -569,15 +690,44 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
     </div>
 
     <div class="card personal">
+      <b data-fr="En dehors du bureau" data-en="Outside the office" data-es="Fuera de la oficina">En dehors du bureau</b>
+      <p data-fr="J'ai été formé en Argentine, en France et aux États-Unis, et j'ai fait trois échanges scolaires sur trois continents. Changer de pays aussi souvent apprend vite à travailler avec des gens qui n'ont ni les mêmes réflexes ni les mêmes façons de faire. À côté de cela, j'ai pratiqué plus de sept sports en club fédéré : c'est là que j'ai pris l'habitude de m'entraîner régulièrement et de ne pas lâcher un problème avant de l'avoir résolu."
+         data-en="I was educated in Argentina, France and the United States, and I did three school exchanges on three continents. Changing countries that often teaches you quickly how to work with people who share neither your reflexes nor your ways of doing things. Alongside that, I played more than seven sports at federated club level: that is where I picked up the habit of training regularly and of not letting go of a problem before it is solved."
+         data-es="Me formé en Argentina, Francia y Estados Unidos, e hice tres intercambios escolares en tres continentes. Cambiar de país tantas veces enseña rápido a trabajar con gente que no comparte ni tus reflejos ni tus maneras de hacer. Junto a eso, practiqué más de siete deportes en club federado: ahí adquirí la costumbre de entrenar con regularidad y de no soltar un problema antes de haberlo resuelto.">J'ai été formé en Argentine, en France et aux États-Unis, et j'ai fait trois échanges scolaires sur trois continents. Changer de pays aussi souvent apprend vite à travailler avec des gens qui n'ont ni les mêmes réflexes ni les mêmes façons de faire. À côté de cela, j'ai pratiqué plus de sept sports en club fédéré : c'est là que j'ai pris l'habitude de m'entraîner régulièrement et de ne pas lâcher un problème avant de l'avoir résolu.</p>
+    </div>
+  </section>
+
+  <!-- ============ LANGUES ============ -->
+  <section id="langues">
+    <div class="sechead">
       <div>
-        <b data-fr="Langues" data-en="Languages">Langues</b>
-        <span data-fr="Espagnol langue maternelle · Français C2 (TCF 640) · Anglais C1 (TOEIC 885)"
-              data-en="Spanish native · French C2 (TCF 640) · English C1 (TOEIC 885)">Espagnol langue maternelle · Français C2 (TCF 640) · Anglais C1 (TOEIC 885)</span>
+        <span class="num">04</span>
+        <h2 data-fr="Trois langues de travail" data-en="Three working languages" data-es="Tres lenguas de trabajo">Trois langues de travail</h2>
+        <p data-fr="Je travaille, je calcule et je rédige dans les trois. Les niveaux sont certifiés, les attestations sont en ligne."
+           data-en="I work, calculate and write in all three. The levels are certified and the attestations are online."
+           data-es="Trabajo, calculo y redacto en las tres. Los niveles están certificados y los certificados están en línea.">Je travaille, je calcule et je rédige dans les trois. Les niveaux sont certifiés, les attestations sont en ligne.</p>
       </div>
-      <div>
-        <b data-fr="En dehors du bureau" data-en="Outside the office">En dehors du bureau</b>
-        <span data-fr="Formé en Argentine, en France et aux États-Unis · Trois échanges scolaires sur trois continents · Plus de sept sports en club fédéré"
-              data-en="Educated in Argentina, France and the USA · Three school exchanges on three continents · More than seven sports at federated club level">Formé en Argentine, en France et aux États-Unis · Trois échanges scolaires sur trois continents · Plus de sept sports en club fédéré</span>
+    </div>
+
+    <div class="langs">
+      <div class="lang">
+        <span class="name" data-fr="Espagnol" data-en="Spanish" data-es="Español">Espagnol</span>
+        <span class="lvl word" data-fr="Natif" data-en="Native" data-es="Nativo">Natif</span>
+        <span class="score" data-fr="Né et formé en Argentine" data-en="Born and educated in Argentina" data-es="Nacido y formado en Argentina">Né et formé en Argentine</span>
+      </div>
+      <div class="lang">
+        <span class="name" data-fr="Français" data-en="French" data-es="Francés">Français</span>
+        <span class="lvl">C2</span>
+        <span class="score" data-fr="TCF 640 sur 699 · décembre 2025" data-en="TCF 640 out of 699 · December 2025" data-es="TCF 640 sobre 699 · diciembre de 2025">TCF 640 sur 699 · décembre 2025</span>
+        <a class="certlink" href="certificats/tcf-c2.pdf" target="_blank" rel="noopener"
+           data-fr="Voir l'attestation" data-en="See the certificate" data-es="Ver el certificado">Voir l'attestation</a>
+      </div>
+      <div class="lang">
+        <span class="name" data-fr="Anglais" data-en="English" data-es="Inglés">Anglais</span>
+        <span class="lvl">C1</span>
+        <span class="score" data-fr="TOEIC 985 sur 990 · mars 2023" data-en="TOEIC 985 out of 990 · March 2023" data-es="TOEIC 985 sobre 990 · marzo de 2023">TOEIC 985 sur 990 · mars 2023</span>
+        <a class="certlink" href="certificats/toeic.pdf" target="_blank" rel="noopener"
+           data-fr="Voir l'attestation" data-en="See the certificate" data-es="Ver el certificado">Voir l'attestation</a>
       </div>
     </div>
   </section>
@@ -585,22 +735,19 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
   <!-- ============ CONTACT ============ -->
   <section id="contact">
     <div class="card contact">
-      <h2 data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</h2>
+      <h2 data-fr="Travaillons ensemble" data-en="Let's work together" data-es="Trabajemos juntos">Travaillons ensemble</h2>
       <p data-fr="Je cherche un poste d'ingénieur projet à Paris, ou à distance, sur des sujets où l'automatisation change vraiment la façon de travailler. Écrivez-moi."
-         data-en="I am looking for a project engineering role in Paris, or remote, on work where automation genuinely changes how a team operates. Write to me.">Je cherche un poste d'ingénieur projet à Paris, ou à distance, sur des sujets où l'automatisation change vraiment la façon de travailler. Écrivez-moi.</p>
+         data-en="I am looking for a project engineering role in Paris, or remote, on work where automation genuinely changes how a team operates. Write to me."
+         data-es="Busco un puesto de ingeniero de proyecto en París, o en remoto, en temas donde la automatización cambie de verdad la forma de trabajar. Escríbeme.">Je cherche un poste d'ingénieur projet à Paris, ou à distance, sur des sujets où l'automatisation change vraiment la façon de travailler. Écrivez-moi.</p>
       <div class="btns">
         <a class="btn solid" href="mailto:joseladrondeg@gmail.com">joseladrondeg@gmail.com</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/jose-ladron-de-guevara">LinkedIn</a>
-      </div>
-      <div class="dl">
-        <span data-fr="Curriculum vitae complet adapté au poste, sur demande"
-              data-en="Full CV tailored to the role, on request">Curriculum vitae complet adapté au poste, sur demande</span>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 José Ladron de Guevara · Paris</p>
+    <p>© 2026 José Ladrón de Guevara · Paris</p>
   </footer>
 
 </main>
@@ -617,18 +764,23 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
     if (img.complete && img.naturalWidth === 0) hideLogo(img);
   });
 
-  var nodes = document.querySelectorAll('[data-fr][data-en]');
+  var LANGS = ['fr', 'en', 'es'];
+  var TITLES = {
+    fr: 'José Ladrón de Guevara · Ingénieur projet',
+    en: 'José Ladrón de Guevara · Project engineer',
+    es: 'José Ladrón de Guevara · Ingeniero de proyecto'
+  };
+  var nodes = document.querySelectorAll('[data-fr]');
   var buttons = document.querySelectorAll('.switch button');
 
   function apply(lang) {
+    if (LANGS.indexOf(lang) === -1) lang = 'en';
     nodes.forEach(function (n) {
       var v = n.getAttribute('data-' + lang);
       if (v !== null) n.textContent = v;
     });
     document.documentElement.lang = lang;
-    document.title = lang === 'en'
-      ? 'José Ladron de Guevara · Project engineer'
-      : 'José Ladron de Guevara · Ingénieur projet';
+    document.title = TITLES[lang];
     buttons.forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
@@ -639,9 +791,10 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
     b.addEventListener('click', function () { apply(b.dataset.lang); });
   });
 
+  /* Anglais par defaut au premier passage ; ensuite, le choix du visiteur. */
   var saved = null;
   try { saved = localStorage.getItem('lang'); } catch (e) {}
-  if (saved === 'en') apply('en');
+  apply(LANGS.indexOf(saved) === -1 ? 'en' : saved);
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var items = document.querySelectorAll('.reveal');
