@@ -166,13 +166,15 @@ h1{font-size:clamp(1.9rem,5.2vw,2.6rem);line-height:1.06;letter-spacing:-.022em;
 .dimcap{font-size:.83rem;color:var(--ink-soft);max-width:48ch;margin:.9rem 0 0}
 
 /* ---------- sommaire ---------- */
-.toc{
-  display:flex;flex-wrap:wrap;align-items:center;gap:.45rem 1.1rem;
-  margin-top:1.5rem;padding:.75rem 0;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+.toc{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.05rem}
+.toc a{
+  font-size:.78rem;font-weight:500;color:var(--ink-soft);
+  background:var(--sheet);border:1px solid var(--line-strong);border-radius:999px;
+  padding:.34rem .85rem;white-space:nowrap;
+  transition:border-color .15s,color .15s;
 }
-.toc a{font-size:.8rem;font-weight:500;color:var(--ink-soft);transition:color .15s}
-.toc a:hover{color:var(--blue)}
+.toc a:hover{border-color:var(--ink);color:var(--ink)}
+@media(max-width:560px){.toc a{font-size:.75rem;padding:.3rem .72rem}}
 
 /* ---------- titre de section ---------- */
 .sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;
@@ -348,6 +350,14 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
              data-fr="Ingénieur projet, automatisation et optimisation des process"
              data-en="Project engineer, automation and process optimisation"
              data-es="Ingeniero de proyecto, automatización y optimización de procesos">Ingénieur projet, automatisation et optimisation des process</p>
+        <nav class="toc" aria-label="Sections">
+          <a href="#parcours" data-fr="Expérience" data-en="Experience" data-es="Experiencia">Expérience</a>
+          <a href="#publication" data-fr="Publication" data-en="Publication" data-es="Publicación">Publication</a>
+          <a href="#formation" data-fr="Formation" data-en="Education" data-es="Formación">Formation</a>
+          <a href="#competences" data-fr="Compétences" data-en="Skills" data-es="Competencias">Compétences</a>
+          <a href="#langues" data-fr="Langues" data-en="Languages" data-es="Idiomas">Langues</a>
+          <a href="#contact" data-fr="Contact" data-en="Contact" data-es="Contacto">Contact</a>
+        </nav>
         </div>
       </div>
       <div class="facts">
@@ -393,15 +403,6 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;text-align:cente
       </div>
     </div>
 
-    <nav class="toc" aria-label="Sections">
-      <span class="eyebrow" data-fr="Aller à" data-en="Jump to" data-es="Ir a">Aller à</span>
-      <a href="#parcours" data-fr="Expérience" data-en="Experience" data-es="Experiencia">Expérience</a>
-      <a href="#publication" data-fr="Publication" data-en="Publication" data-es="Publicación">Publication</a>
-      <a href="#formation" data-fr="Formation" data-en="Education" data-es="Formación">Formation</a>
-      <a href="#competences" data-fr="Compétences" data-en="Skills" data-es="Competencias">Compétences</a>
-      <a href="#langues" data-fr="Langues" data-en="Languages" data-es="Idiomas">Langues</a>
-      <a href="#contact" data-fr="Contact" data-en="Contact" data-es="Contacto">Contact</a>
-    </nav>
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
